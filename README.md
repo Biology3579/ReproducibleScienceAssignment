@@ -26,8 +26,13 @@ If you would like to run the analysis and reproduce the results yourself, follow
 ### Installation
 **1. Clone the repository:**
 
-First, clone the repository to your local machine
-This can be done by running the following command on Git bash or Terminal application:
+First, clone the repository to your local machine: 
+1. Open Git Bash or the terminal application
+2. Navigate to where you want to clone the repo to _(e.g. Documents)_:
+```bash
+cd ~/Documents
+```
+3. Clone the repo to the specificed location:
 ```bash
 git clone https://github.com/Biology3579/ReproducibleScienceAssignment.git 
 ```
