@@ -60,17 +60,22 @@ To provide more precise estimates of the species’ bill characteristics, I also
 
 ```{r packages}
 
+renv::init()
 #load all the required packages
-library(tidyverse) #for cleaning the data
-library(janitor) #for cleaning the data
-library(palmerpenguins) #contains the dataset
-library(here) #to specify the directory
+library(here) # to specify the directory
+library(tinytex) 
+library(renv) # to  
+library(janitor) # for cleaning the data
+library(tidyverse) # for cleaning the data
+library(palmerpenguins) # contains the dataset
+library(dplyr) #for manipulating the data
 library(ggplot2) #for making plots
 library(lme4) #for making linear models
 library(grid) #for making multi-panel figures
 library(gridExtra) #for making multi-panel figures
-library(dplyr) #for manipulating the data
 library(ggsignif) #for adding significance stars to plots
+
+
 ```
 
 ```{r load-&-save-data}
