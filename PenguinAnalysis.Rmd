@@ -20,13 +20,13 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The genus Pygoscelis, which includes Adélie (*Pygoscelis adeliae*), Chinstrap (*Pygoscelis antarcticus*), and Gentoo (*Pygoscelis papua*) penguins, occupies overlapping ranges across the Western Antarctic Peninsula []. Despite this sympatric distribution, these species exhibit distinct feeding ecologies, ranging from specialist to generalist strategies, allowing them to occupy different ecological niches and minimising competition []. Diet composition analysis of Chinstrap penguins shows a high degree of specialization, with their diet consisting almost exclusively of the krill species *Euphausia superba* []. In contrast, while Adélie penguins also rely heavily on krill, their diet is more varied, consisting of both *E. superba* and *E. crystallorophias* krill species, along with notothenioid fish. Dietary analyses of Gentoo penguins reveal that this species has the most varied feeding habits, with a generalist diet consisting of a broad range of crustaceans and fish []. Interestingly, krill constitutes a smaller portion of their diet compared to other *Pygoscelis* species, highlighting a distinct difference in the feeding ecology of this species.
+The genus Pygoscelis, which includes Adélie (*Pygoscelis adeliae*), Chinstrap (*Pygoscelis antarcticus*), and Gentoo (*Pygoscelis papua*) penguins, occupies overlapping ranges across the Western Antarctic Peninsula []. Despite this sympatric distribution, these species exhibit distinct feeding ecologies, ranging from specialist to generalist strategies, allowing them to occupy different ecological niches and minimising competition []. Diet composition analysis of Chinstrap penguins shows a high degree of specialization, with their diet consisting almost exclusively of the krill species *Euphausia superba* []. In contrast, while Adélie penguins also rely heavily on krill, their diet is more varied, consisting of both *E. superba* and *E. crystallorophias* krill species, along with notothenioid fish. Dietary analyses of Gentoo penguins reveal that this species has the most varied feeding habits, with a generalist diet consisting of a broad range of crustaceans and fish []. Notably, krill constitutes a smaller portion of their diet compared to other *Pygoscelis* species, highlighting a distinct difference in the feeding ecology of this species.
 
 The bill morphology of penguins is a critical aspect of their feeding ecology, as it directly influences their ability to capture and consume different prey types. A study by Chávez-Hoffmeister (2020) found that penguin species display distinct bill shapes that are closely tied to their specific feeding strategies []. For example, krill-eating penguins tend to have wider beaks and broader jaws, which help them efficiently filter and capture krill. In contrast, fish-eating species possess narrower, more robust beaks designed to exert greater bite force, allowing them to grasp and hold onto slippery fish more effectively []. These morphological adaptations are essential for the species' feeding behavior, enabling them to exploit their preferred prey types. As such, each penguin species requires bill morphology that is finely tuned to its ecological niche, ensuring efficient foraging and survival in their specific environments.
 
 ## Hypotheses
 
-Based on the importance of bill morphology in feeding behaviors and the differences in feeding ecologies between the species, I hypothesize that the three penguin species will exhibit distinct bill morphologies that reflect their specific feeding strategies. Specifically, since Gentoo penguins have a much more diverse diet compared to the other two species, I expect them to exhibit the most distinct bill morphology.
+Based on the importance of bill morphology in feeding behaviors and the differences in feeding ecologies between the species, I hypothesize that the three penguin species will exhibit distinct bill morphologies that reflect their specific feeding strategies. 
 
 ## Methods
 
@@ -50,12 +50,11 @@ Additionally, I calculated the 95% confidence intervals for the differences in m
 
 ## Analysis
 
-```{r}
+```{r renv-restore}
 renv::restore()
 ```
 
-
-```{r packages, results=hide}
+```{r packages}
 # load the required packages
 library(here)        # for specifying the directory
 library(tinytex)     # for LaTeX-related tasks
@@ -71,7 +70,6 @@ library(grid)        # for graphical layout
 library(gridExtra)   # for graphical layout
 library(ggsignif)    # for adding significance annotations to ggplot2 plots
 ```
-
 
 ```{r load-&-save-data}
 #Load the raw data and save it
@@ -110,7 +108,7 @@ print(bad_figure)
        #width = 8, height = 6, units = "in", dpi = 300) 
 ```
 
-*Figure 1: A bar chart of mean bill length vs. mean bill depth for three species of _Pygoscelis_ penguins*
+_Figure 1: Bar chart of mean bill length vs. mean bill depth for three species of *Pygoscelis* penguins._
 
 b)  Write about how your design choices mislead the reader about the underlying data (200-300 words).
 
@@ -122,7 +120,7 @@ Furthermore, some of the stylistic choices made for the graph make it harder to 
 
 Importance of science communication ...
 
-**QUESTION 2: Good exploratory figure**
+**QUESTION 2: Data Pipeline**
 
 ```{r  exploratory-figure-plot, fig.align = "center"}
 
@@ -136,9 +134,7 @@ exploratory_figure # Show the plot
        #plot = exploratory_figure, 
        #width = 8, height = 6, units = "in", dpi = 300) 
 ```
- 
-
-*Figure 2: Scatterplot showing the distribution of bill lengths and bill depths for three species of _Pygoscelis_ penguins*
+_Figure 2: Scatterplot showing the distribution of bill lengths and bill depths for three species of *Pygoscelis* penguins, with variability shown in bill length and depth across Adélie, Chinstrap, and Gentoo penguins._
 
 Figure 2 provides an exploratory visualization of the distribution of bill length and bill depth among three species of *Pygoscelis* penguins, revealing distinct patterns in their morphospace. Adélie penguins tend to have relatively shorter but wider bills (greater bill depth), while Gentoo penguins exhibit longer and narrower bills. Chinstrap penguins occupy an intermediate space, showing bill depths similar to Adélie penguins but lengths closer to those of Gentoo penguins. This clear separation suggests potential species-specific differences in bill morphology.
 
@@ -193,10 +189,9 @@ bill_depth_t_tests
 
 ## Results
 
-### All penguin species show significant differences in bill morphology 
+### All three studied penguin species show significant differences in length/depth ratios 
 
-
-```{r plot-figure-3}
+```{r plot-figure-3, fig.align='center'}
 source(here("functions", "plotting.R"))
 figure_3 <- results_plot_1(analysis_data)
 
@@ -208,18 +203,13 @@ figure_3
        #plot = exploratory_figure, 
        #width = 8, height = 6, units = "in", dpi = 300)
 ```
+_Figure 3: Boxplot showing differences in bill morphology among Adélie, Chinstrap and Gentoo penguins. Statistical significance is indicated by asterisks (*** p < 0.001), showing highly significant differences between all species pairs._
 
+To assess whether there are significant differences in bill morphology across the three penguin species (Adélie, Chinstrap, and Gentoo), a one-way ANOVA was performed on the combined bill length and depth measurements (bill morphology). The results from the ANOVA indicated that bill morphology significantly differed between the species (F(2, 330) = 1451.7, p < 2.2e-16), confirming the presence of interspecies variation. Additional post-hoc pairwise comparisons were conducted using Tukey's Honest Significant Difference (HSD) test, identified highly significant differences between all species pairs. 
 
-Figure 3
+By analysis the specific bill length/depth ratios displayed in Figure 3, we can see that Gentoo penguins have the largest ratio, suggesting relatively longer and shallower bills, greatly contrasting to Adélie penguins have a smaller length/depth ratio, having shorter, deeper beaks. Instead, Chinstrap penguins seem to have an intermediate ratio, with their bill morphology falling between that of the Adélie and Gentoo penguins.
 
-From figrue 3 we can see that bill morphology is signifciantly between species, with significant annotations (***p < 0.001) for all pairwise comparisons between species.
-A one-way analysis of variance (ANOVA) revealed significant differences in bill morphology across the three species (F(2, 330) = 1451.7, p < 2.2e-16). This indicates that bill morphology measurements, such as bill length, depth, and shape, differ significantly among the species. Tukey’s post-hoc test indicated that all pairwise comparisons between the species were statistically significant, with the following results:
-
-Chinstrap vs. Adélie: Difference = 0.532, 95% CI [0.477, 0.587], p < 0.001
-Gentoo vs. Adélie: Difference = 1.055, 95% CI [1.009, 1.101], p < 0.001
-Gentoo vs. Chinstrap: Difference = 0.523, 95% CI [0.466, 0.580], p < 0.001
-
-### Penguins bills may be adapted to their feeding ecologies
+### There is variability in bill length and depth across the three penguin species, with some overlap in their morphologies
 
 ```{r plot-figure-4}
 source(here("functions", "plotting.R"))
@@ -240,55 +230,20 @@ grid.text("B", x = 0.57, y = 0.95, gp = gpar(fontsize = 12)) #Adds label 'B' to 
        #width = 8, height = 6, units = "in", dpi = 300)
 ```
 
-*Figure 4. A plot ... *
+_Figure 4: Boxplots showing differences in bill length (Figure 4a) and bill depth (Figure 4b) among Adélie, Chinstrap and Gentoo penguins. Statistical significance is indicated by asterisks (*** p < 0.001, ** p < 0.01, * p < 0.05, ns p > 0.05). Figure 4a shows differences in bill length across the three species. Figure 4b shows differences in bill depth across the three species._
 
-### Differences in bill deth and bill legnth
+To investigate further the differences in bill morphology, pairwise t-tests were conducted to assess whether there were significant differences in bill length and bill depth among the three species (Adélie, Chinstrap, and Gentoo).
+For bill length, the results showed significant differences between all species pairs. As shown in Figure 4a, Adélie penguins had highly significantly shorter bills compared to both Chinstrap (p < 2.52e-70) and Gentoo (p < 1.05e-73) penguins. The differences in bill length between Chinstrap and Gentoo penguins were less disparate but still significant. These findings indicate that bill length varies considerably between species.
 
+Comparisons for bill depth across the species revealed that both Adélie and Chinstrap penguins exhibited significant differences in bill depth when compared to Gentoo penguins (Adélie vs. Gentoo: p < 6.62e-75, Chinstrap vs. Gentoo: p < 5.05e-59), but there were no significant differences between Adélie and Chinstrap penguins (p = 6.57e-01). From Figure 4b we can indeed see that Adélie and Chinstrap penguins have similarly wide bills, whereas Gentoo penguins have significantly narrower bills. 
 
-Figure 2 shows the relationship between bill length and bill depth for each species, with confidence intervals for mean values. Indeed these 
+## Conclusions
 
-After analysisng the differences in 
+The results of this study reveal notable differences in bill morphology across the three Pygoscelis penguin species, highlighting potential relationships between bill structure and feeding strategies. All penguins show significant differences in bill length, which could indeed be reflective of different feeding habits. Additionally Gentoo penguins, in particular, exhibit distinctly narrower bills compared to the other two species, which may reflect their more diverse and generalized diet, consisting mainly of fish. The narrower bill may be better suited for capturing fish, which require more precise handling. On the other hand, Adélie and Chinstrap penguins show more similar bill depths that may be better adapted to capture krill, as the primary component of their diet. The similarity in bill depth between the two species might reflect a shared ecological niche, with both relying heavily on krill, a prey species that is heavily affected by climate change, particularly as warming oceans and retreating sea ice threaten the availability of krill in their habitats.
 
-The ANOVA results indicate that there is a highly significant effect of species on bill_morphology. In other words, the bill morphology measurements (likely length and/or depth) differ significantly among the three species.
-Form the tukey: All pairwise comparisons are statistically significant (p-value = 0 for all pairs).
-The confidence intervals for the differences do not cross zero, confirming the significant differences.
-Gentoo penguins have the largest average bill morphology values, followed by Chinstrap, and then Adélie.
+However, while the differences in bill morphology across the species are significant, the study does not provide direct evidence linking these morphological traits to dietary preferences. There may be other ecological factors at play, such as environmental influences and behavioural differences not associated to feeding (e.g social behaviours) which could also shape bill morphology. Moreover, it is important to note that while the bill length-to-depth ratio has provided useful insights into bill morphology, it has limitations as a sole measure of feeding strategy. The relationship between bill morphology and feeding behavior is complex, and factors such as bill shape, size, and curvature could all play a role in how penguins capture and consume different prey types. Therefore, further research is needed to explore how these morphological traits interact with ecological factors and how penguin species might adapt to changing environmental conditions.
 
-Beak Shape Ratio: The ratio of culmen length to depth significantly differs across species. Gentoo penguins have the largest ratio, followed by Chinstrap penguins, and Adelie penguins have the smallest ratio.
-Interpretation of Shape: Since the ratio is a measure of beak shape, this suggests that Gentoo penguins have relatively longer, shallower beaks, while Adelie penguins have shorter, deeper beaks.
-
-Bill Length Trends:
-
-Chinstrap penguins have the longest bills, followed by Gentoo, and then Adélie penguins.
-Significant differences exist between all species pairs.
-Magnitude of Differences:
-
-The differences between Chinstrap and Adélie, as well as Gentoo and Adélie, are much larger than the difference between Gentoo and Chinstrap.
-These results highlight clear interspecies variations in bill length.
-
-
-Beak Length: Chinstrap and Gentoo penguins both have significantly longer beaks than Adelie penguins. Gentoo penguins have slightly shorter beaks than Chinstrap penguins, though this difference is still statistically significant.
-
-
-Beak Depth: Gentoo penguins have significantly deeper beaks compared to both Adelie and Chinstrap penguins. There is no significant difference in beak depth between Chinstrap and Adelie penguins. 
-
-ill Depth Trends:
-
-Gentoo penguins have significantly smaller bill depths than both Adélie and Chinstrap penguins.
-No significant difference in bill depth is observed between Adélie and Chinstrap penguins.
-
-They show clear patterns of differences in beak morphology (both length and depth) across species. The TukeyHSD results reveal specific comparisons, quantifying the size and direction of differences between species.
-
-These findings align well with feeding habits.
-
-## Conclusion
-
-
-They show clear patterns of differences in beak morphology (both length and depth) across species. The TukeyHSD results reveal specific comparisons, quantifying the size and direction of differences between species.
-
-These findings align well with feeding habits.
-
-As the cliamte changes, wih rapidly decling extent and duration of sea ice in Antartica, with correlated reductions in Antarctic krill6 (Euphausia superba), the main prey item for most meso- and top-predators in the Antarctic ecosystem will decrease. A recent article suggetsed that gentoo, which have the most diverse diets, will be able to adpat whilst chinsatrp and adelie, have been showing recent declines in. As such, nless these penguisna re able to adapt, they will perish (Clucas et al., 2014). Signficantylm I argue that bill mropholgoy mught be amn impritnat determinant of diet, as it will speciesl;ay how they hunt and how ffectively they ctahc prey. of course mophological liamitaions and gentics will limit how quicly these can adapt and diactet whetehr tbe penguisna re able to survive at all.
+In conclusion, this study provides valuable insights into how bill morphology varies between three species of *Pygoscelis* penguins and provides promising insights into how these morphologies might reflect the different feeding strategies between these, but it also highlights the need for more comprehensive studies that take into account other ecological variables and the broader environmental context. Understanding these relationships is especially critical in the face of climate change, which is likely to affect the availability of prey species such as krill (Clucas et al., 2014), and could enforce strong selection for shifting the dynamics between specialized and generalist feeders in penguin populations .
 
 ## References
 
@@ -298,8 +253,7 @@ As the cliamte changes, wih rapidly decling extent and duration of sea ice in An
 
 ** QUESTION 3: Open Science** 
 
-**a) My GitHub link**
-
+**a) My GitHub link:**
 <https://github.com/Biology3579/ReproducibleScienceAssignment.git>
 
 

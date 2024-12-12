@@ -144,9 +144,10 @@ results_plot_1 <- function(data) {
     # Apply custom colours
     scale_color_manual(values = custom_colours) +
     
-    # Axes labels 
+    # Labels and title
     labs(x = "Species",
-         y = "Bill Length-to-Depth Ratio") +
+         y = "Bill Length-to-Depth Ratio",
+         title = "Comparison of Bill Morphology Across Penguin Species") +
     
     # Themes, sizes and positioning
     theme_minimal() + 
