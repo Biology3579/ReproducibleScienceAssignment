@@ -14,9 +14,7 @@ mainfont: Arial
 knitr::opts_chunk$set(
   echo = TRUE,       # Show R code in the document
   warning = FALSE,   # Suppress warnings
-  message = FALSE,   # Suppress messages
-  tidy.opts = list(width.cutoff = 60),  # Enable code tidying with options
-  tidy = TRUE        # Enable code tidying
+  message = FALSE   # Suppress messages
 )
 ```
 
@@ -77,10 +75,8 @@ library(ggsignif) #for adding significance stars to plots
 
 ```{r load-&-save-data}
 #Load the raw data and save it
-
 write.csv(penguins_raw, here("data", "penguins_raw.csv")) #To write data to csv
 penguins_raw <- read.csv(here("data","penguins_raw.csv")) #Load data 
-
 glimpse(penguins_raw) # Quick summary of the structure of the raw data
 ```
 
@@ -97,7 +93,6 @@ glimpse(penguins_clean) # Quick summary of clean data
 source(here("functions", "cleaning_and_curating.R"))
 analysis_data <- curating_penguins_clean(penguins_clean)
 write_csv(analysis_data, here("data", "analysis_data.csv"))
-
 glimpse(analysis_data) # Quick summary of analysis data
 ```
 
@@ -159,28 +154,26 @@ I first carried out an ANOVA, followed by Tukey-Kramer tests, to determine the g
 
 ```{r bill-morphology-ANOVA}
 # ANOVA to test for differences in bill morphology between penguin species
-anova_morphology <- aov(bill_morphology ~ species, data = analysis_data)
-summary(anova_morphology)
+bill_morphology_model <- lm(bill_morphology ~ species, data = analysis_data)
+anova(bill_morphology_model)
 ```
 
 ```{r bill-morphology-Tukey-Kramer}
 # Tukey-Kramer test for pairwise comparisons of bill morphology between penguin species
-tukey_results_morphology <- TukeyHSD(aov(bill_morphology ~ species, data = analysis_data))
-print(tukey_results_morphology)
+TukeyHSD(aov(bill_morphology_model))
 ```
 
 #### Differences in bill length
 
 ```{r bill-length-ANOVA}
 # ANOVA to test for differences in bill length between penguin species
-anova_length <- aov(bill_length_mm ~ species, data = analysis_data)
-summary(anova_length)
+bill_length_model <- lm(bill_length_mm ~ species, data = analysis_data)
+anova(bill_length_model)
 ```
 
 ```{r bill-length-Tukey-Kramer}
 # Tukey-Kramer test for pairwise comparisons of bill length between penguin species
-tukey_results_length <- TukeyHSD(aov(bill_length_mm ~ species, data = analysis_data))
-print(tukey_results_length)
+TukeyHSD(aov(bill_length_model))
 ```
 
 ```{r bill-length-CIs}
@@ -201,14 +194,13 @@ print(CIs_bill_length)
 
 ```{r bill-depth-ANOVA}
 # ANOVA to test for differences in bill depth between penguin species
-anova_depth <- aov(bill_depth_mm ~ species, data = analysis_data)
-summary(anova_depth)
+bill_depth_model <- lm(bill_depth_mm ~ species, data = analysis_data)
+anova(bill_depth_model)
 ```
 
 ```{r bill-depth-Tukey-Kramer}
 # Tukey-Kramer test for pairwise comparisons of bill depth between penguin species
-tukey_results_depth <- TukeyHSD(aov(bill_depth_mm ~ species, data = analysis_data))
-print(tukey_results_depth)
+TukeyHSD(aov(bill_depth_model))
 ```
 
 ```{r bill-depth-CIs}
@@ -262,7 +254,7 @@ Beak Length: Chinstrap and Gentoo penguins both have significantly longer beaks 
 
 They show clear patterns of differences in beak morphology (both length and depth) across species. The TukeyHSD results reveal specific comparisons, quantifying the size and direction of differences between species.
 
-These findigns align well with feeding habits.
+These findings align well with feeding habits.
 
 As the cliamte changes, wih rapidly decling extent and duration of sea ice in Antartica, with correlated reductions in Antarctic krill6 (Euphausia superba), the main prey item for most meso- and top-predators in the Antarctic ecosystem will decrease. A recent article suggetsed that gentoo, which have the most diverse diets, will be able to adpat whilst chinsatrp and adelie, have been showing recent declines in. As such, nless these penguisna re able to adapt, they will perish (Clucas et al., 2014). Signficantylm I argue that bill mropholgoy mught be amn impritnat determinant of diet, as it will speciesl;ay how they hunt and how ffectively they ctahc prey. of course mophological liamitaions and gentics will limit how quicly these can adapt and diactet whetehr tbe penguisna re able to survive at all.
 
