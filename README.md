@@ -20,16 +20,22 @@ In the /finished_files folder, you will find the completed reports summarizing t
 If you would like to run the analysis and reproduce the results yourself, follow these steps to set up your local environment and execute the necessary code.
 
 ### Prerequisites
-1. Install [Git](https://git-scm.com/) on your system.
+1. Install Git on your system.
 2. Install R and RStudio.
 
 ### Installation
 **1. Clone the repository:**
 
-First, clone the repository to your local machine:
+First, clone the repository to your local machine
+This can be done by running the following command on Git bash or Terminal application:
 ```bash
  git clone https://github.com/Biology3579/ReproducibleScienceAssignment.git
 ```
+This will create a local copy of the repository on your machine. After cloning, navigate to the project directory:
+```bash
+cd ReproducibleScienceAssignment
+```
+
 **2. Install renv (if not already installed)**
 
 In your R console, run the following command to install the renv package, which is used to manage the project's R dependencies:
