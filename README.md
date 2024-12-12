@@ -36,7 +36,9 @@ cd ~/Documents
 ```bash
 git clone https://github.com/Biology3579/ReproducibleScienceAssignment.git 
 ```
-This will create a local copy of the repository on your machine. After cloning, navigate to the project directory:
+This will create a local copy of the repository on your machine.
+
+4. After cloning, navigate to the project directory:
 ```bash
 cd ReproducibleScienceAssignment
 ```
