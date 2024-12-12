@@ -29,7 +29,7 @@ If you would like to run the analysis and reproduce the results yourself, follow
 First, clone the repository to your local machine
 This can be done by running the following command on Git bash or Terminal application:
 ```bash
-git clone https://github.com/Biology3579/ReproducibleScienceAssignment.git
+git clone https://github.com/Biology3579/ReproducibleScienceAssignment.git 
 ```
 This will create a local copy of the repository on your machine. After cloning, navigate to the project directory:
 ```bash
