@@ -60,7 +60,7 @@ To provide more precise estimates of the species’ bill characteristics, I also
 
 ```{r packages}
 
-renv::init()
+#renv::init()
 #load all the required packages
 library(here) # to specify the directory
 library(tinytex) 
@@ -75,7 +75,16 @@ library(grid) #for making multi-panel figures
 library(gridExtra) #for making multi-panel figures
 library(ggsignif) #for adding significance stars to plots
 
+#renv::snapshot()
+```
 
+### Packages
+
+All the necessary packages are store in the renv.lock file. The renv package manages the isolated environment for your R project, so the package versions are specific to the project rather than being installed globally. When you run renv::restore(), it will install the packages as described in the renv.lock file, ensuring that you and anyone else using the project have the same versions of the necessary packages. This process will make your project environment easily reproducible across different systems.
+
+Note: install renv package (install.packages("renv") if not already installed.
+```{r}
+renv::restore() #to load up the necessary packages.
 ```
 
 ```{r load-&-save-data}

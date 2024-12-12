@@ -193,7 +193,7 @@ results_plot_2 <- function(data) {
                     y = mean_depth),        
                   width = 0.2,     #
                   color = "black", #
-                  size = 1) +      #
+                  linewidth = 1) +      #
     
     # Add CIs for mean depth as error bars
     geom_errorbar(aes
@@ -202,7 +202,7 @@ results_plot_2 <- function(data) {
                     x = mean_length),      #
                   width = 0.4,     #
                   color = "black", #
-                  size = 1) +      #
+                  linewidth = 1) +      #
     
     # Axis and legend labels 
     labs(x = "Bill Length (mm)", y = "Bill Depth (mm)", # Axes 
