@@ -111,7 +111,7 @@ plot_exploratory_figure <- function(data) {
     legend.position = "right")                     # Legend position
 }
 
-# Function to create the boxplot with significance annotations
+# Function to create bill morphology boxplot with significance annotations
 results_plot_1 <- function(data) {
   
   # Define data and axes
@@ -158,66 +158,95 @@ results_plot_1 <- function(data) {
 }
 
 
-# Function to create the results plot
+# # Function to create bill length boxplot with significance annotations
 results_plot_2 <- function(data) {
   
-  # Combine the mean and confidence interval data with the original dataframe to enable plotting together
-  combined_data <- analysis_data %>%
-    left_join(CIs_bill_depth, by = "species") %>%  # combine bill length CI data
-    left_join(CIs_bill_length, by = "species")     # combine bill depth CI data
-
-  # Results plot ...
-  ggplot(data = combined_data,
-    aes(x = bill_length_mm, # Length on x-axis
-        y = bill_depth_mm,  # Depth on y-axis
-        color = species,    # Species-specific colour
-        shape = species)) + # Species-specific shape
+  # Define data and axes
+  ggplot(data = analysis_data, 
+         aes(x = species, 
+             y = bill_length_mm)) +  # Change to bill_length_mm for the y-axis
     
-    # Plot all individual data points 
-    geom_jitter(
-      size = 3,       # Point size
-      alpha = 0.3) +  # Point transparency
+    # Boxplot for bill length
+    geom_boxplot(aes(
+      color = species),      # Species-specific colour
+      width = 0.5,            # Width of the boxplot
+      show.legend = FALSE) +  # Remove legend for color
     
-    # Plot mean points for bill length and depth
-    geom_point(aes
-               (x = mean_length,  # Length on x axis
-                 y = mean_depth,  # Depth on y axis
-                 color = species, # Species-specific colour
-                 shape = species),# Species-specific shape
-               size = 4) + # Point size
+    # Plot all individual data points
+    geom_jitter(aes(
+      color = species),    # Species-specific colour
+      alpha = 0.3,          # Transparency of the points
+      show.legend = FALSE,  # No legend for the points
+      position = position_jitter(width = 0.2, seed = 0)) +  # Add jitter with width
     
-    # Add CIs for mean length as error bars
-    geom_errorbar(aes
-                  (xmin = lower_length_ci,  #
-                    xmax = upper_length_ci, #
-                    y = mean_depth),        
-                  width = 0.2,     #
-                  color = "black", #
-                  linewidth = 1) +      #
-    
-    # Add CIs for mean depth as error bars
-    geom_errorbar(aes
-                  (ymin = lower_depth_ci,  #
-                    ymax = upper_depth_ci, #
-                    x = mean_length),      #
-                  width = 0.4,     #
-                  color = "black", #
-                  linewidth = 1) +      #
-    
-    # Axis and legend labels 
-    labs(x = "Bill Length (mm)", y = "Bill Depth (mm)", # Axes 
-         color = "Species", shape = "Species") +        # Legend
+    # Add significance levels
+    geom_signif(comparisons = list(c("Adelie", "Chinstrap"), 
+                                   c("Chinstrap", "Gentoo"), 
+                                   c("Adelie", "Gentoo")),
+                annotations = c("***", "*", "***"),  # Adding the significance stars
+                test = "t.test",  # Change to t-test for pairwise comparisons
+                y_position = c(59, 61, 64),    # Position of significance stars
+                tip_length = 0.01) +            # Short tip lines for neatness
     
     # Apply custom colours
     scale_color_manual(values = custom_colours) +
-    # Apply custom shapes
-    scale_shape_manual(values = custom_shapes) +
     
-    # Themes, sizes and positioning
+    # Axes labels 
+    labs(x = "Species",
+         y = "Bill Length (mm)") +  # Update y-axis label to reflect bill length
+    
+    # Themes, sizes, and positioning
     theme_minimal() + 
     theme(
       axis.title.x = element_text(size = 10),
       axis.title.y = element_text(size = 10),
-      legend.position = "right")
+      plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+      legend.position = "none")
+}
+
+# # Function to create bill depth boxplot with significance annotations
+results_plot_3 <- function(data) {
+  
+  # Define data and axes
+  ggplot(data = analysis_data, 
+         aes(x = species, 
+             y = bill_depth_mm)) +  # Change to bill_length_mm for the y-axis
+    
+    # Boxplot for bill depth
+    geom_boxplot(aes(
+      color = species),      # Species-specific colour
+      width = 0.5,            # Width of the boxplot
+      show.legend = FALSE) +  # Remove legend for color
+    
+    # Plot all individual data points
+    geom_jitter(aes(
+      color = species),    # Species-specific colour
+      alpha = 0.3,          # Transparency of the points
+      show.legend = FALSE,  # No legend for the points
+      position = position_jitter(width = 0.2, seed = 0)) +  # Add jitter with width
+    
+    # Add significance levels
+    geom_signif(comparisons = list(c("Adelie", "Chinstrap"), 
+                                   c("Chinstrap", "Gentoo"), 
+                                   c("Adelie", "Gentoo")),
+                annotations = c("ns", "***", "***"),  # Adding the significance stars
+                test = "t.test",  # Change to t-test for pairwise comparisons
+                y_position = c(22, 21, 24),    # Position of significance stars
+                tip_length = 0.01) +            # Short tip lines for neatness
+    
+    # Apply custom colours
+    scale_color_manual(values = custom_colours) +
+    
+    # Axes labels 
+    labs(x = "Species",
+         y = "Bill Depth (mm)") +  # Update y-axis label to reflect bill length
+    
+    # Themes, sizes, and positioning
+    theme_minimal() + 
+    theme(
+      axis.title.x = element_text(size = 10),
+      axis.title.y = element_text(size = 10),
+      plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+      legend.position = "none")
 }
 

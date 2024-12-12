@@ -20,9 +20,9 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The genus Pygoscelis, which includes Adélie (*Pygoscelis adeliae*), Chinstrap (*Pygoscelis antarcticus*), and Gentoo (*Pygoscelis papua*) penguins, occupies overlapping ranges across the Western Antarctic Peninsula. Despite this sympatric distribution, these species exhibit distinct feeding ecologies, ranging from specialist to generalist strategies, allowing them to occupy different ecological niches and minimising competition. Diet composition analysis of Chinstrap penguins shows a high degree of specialization, with their diet consisting almost exclusively of the krill species *Euphausia superba*. In contrast, while Adélie penguins also rely heavily on krill, their diet is more varied, consisting of both *E. superba* and *E. crystallorophias* krill species, along with notothenioid fish. Dietary analyses of Gentoo penguins reveal that this species has the most varied feeding habits, with a generalist diet consisting of a broad range of crustaceans and fish. Interestingly, krill constitutes a smaller portion of their diet compared to other *Pygoscelis* species, highlighting a distinct difference in the feeding ecology of this species.
+The genus Pygoscelis, which includes Adélie (*Pygoscelis adeliae*), Chinstrap (*Pygoscelis antarcticus*), and Gentoo (*Pygoscelis papua*) penguins, occupies overlapping ranges across the Western Antarctic Peninsula []. Despite this sympatric distribution, these species exhibit distinct feeding ecologies, ranging from specialist to generalist strategies, allowing them to occupy different ecological niches and minimising competition []. Diet composition analysis of Chinstrap penguins shows a high degree of specialization, with their diet consisting almost exclusively of the krill species *Euphausia superba* []. In contrast, while Adélie penguins also rely heavily on krill, their diet is more varied, consisting of both *E. superba* and *E. crystallorophias* krill species, along with notothenioid fish. Dietary analyses of Gentoo penguins reveal that this species has the most varied feeding habits, with a generalist diet consisting of a broad range of crustaceans and fish []. Interestingly, krill constitutes a smaller portion of their diet compared to other *Pygoscelis* species, highlighting a distinct difference in the feeding ecology of this species.
 
-The bill morphology of penguins is a critical aspect of their feeding ecology, as it directly influences their ability to capture and consume different prey types. A study by Chávez-Hoffmeister (2020) found that penguin species display distinct bill shapes that are closely tied to their specific feeding strategies []. For example, krill-eating penguins tend to have wider beaks and broader jaws, which help them efficiently filter and capture krill. In contrast, fish-eating species possess narrower, more robust beaks designed to exert greater bite force, allowing them to grasp and hold onto slippery fish more effectively. These morphological adaptations are essential for the species' feeding behavior, enabling them to exploit their preferred prey types. As such, each penguin species requires bill morphology that is finely tuned to its ecological niche, ensuring efficient foraging and survival in their specific environments.
+The bill morphology of penguins is a critical aspect of their feeding ecology, as it directly influences their ability to capture and consume different prey types. A study by Chávez-Hoffmeister (2020) found that penguin species display distinct bill shapes that are closely tied to their specific feeding strategies []. For example, krill-eating penguins tend to have wider beaks and broader jaws, which help them efficiently filter and capture krill. In contrast, fish-eating species possess narrower, more robust beaks designed to exert greater bite force, allowing them to grasp and hold onto slippery fish more effectively []. These morphological adaptations are essential for the species' feeding behavior, enabling them to exploit their preferred prey types. As such, each penguin species requires bill morphology that is finely tuned to its ecological niche, ensuring efficient foraging and survival in their specific environments.
 
 ## Hypotheses
 
@@ -32,60 +32,46 @@ Based on the importance of bill morphology in feeding behaviors and the differen
 
 ### Data
 
-To investigate the differences in bill morphology across penguin species, I will be utilizing the palmerpenguins dataset, which is derived from a study conducted by Gorman et al. (2014) on Pygoscelis penguins in the Palmer Archipelago, located west of the Antarctic Peninsula, near Anvers Island. The data were collected from 2007 to 2009 across three islands: Biscoe (64° 48.9'S, 63° 46.9'W), Torgersen (64° 46.9'S, 64° 04.9'W), and Dream (64° 43.9'S, 64° 13.9'W). This dataset includes multiple measurements taken on three species of Pygoscelis penguins—Adélie, Chinstrap, and Gentoo—observed on these three islands, including body measurements (culmen length, culmen depth, flipper length, and body mass), sex information, nesting details (including clutch completion and egg laying dates), and stable isotope data (Δ15N and Δ13C) for 344 individual penguins across three species.
+To investigate the differences in bill morphology across penguin species, I will be utilizing the palmerpenguins dataset, which is derived from a study conducted by Gorman et al. (2014) on Pygoscelis penguins in the Palmer Archipelago, located west of the Antarctic Peninsula, near Anvers Island. The data were collected from 2007 to 2009 across three islands: Biscoe (64° 48.9'S, 63° 46.9'W), Torgersen (64° 46.9'S, 64° 04.9'W), and Dream (64° 43.9'S, 64° 13.9'W). This dataset includes multiple measurements taken on three species of Pygoscelis penguins - Adélie, Chinstrap, and Gentoo - observed on these three islands, including body measurements (culmen length, culmen depth, flipper length, and body mass), sex information, nesting details (including clutch completion and egg laying dates), and stable isotope data (Δ15N and Δ13C) for 344 individual penguins across three species.
 
 ### Statistical analysis
 
-To examine the differences in bill morphology across the three penguin speciesI will focus on two key measurements: bill length and bill depth. These measurements serve as indicators of bill morphology, providing insights into how adaptations to feeding strategies differ among species with varying diets.
+To investigate differences in bill morphology across Adélie, Chinstrap, and Gentoo penguins, I analyzed two key measurements: bill length and bill depth (which I also refer to as width). These metrics were used to assess morphological adaptations related to feeding ecology.
 
-1.  Ratio of Bill Length to Bill Depth The first step in my analysis will involve examining the ratio of bill length to bill depth for each species. This ratio is a useful indicator of overall bill shape and can help highlight differences in bill morphology that are associated with each species' feeding ecology. For example, a more specialized feeder may have a differently proportioned bill compared to a more generalist species.
+_Ratio of Bill Length to Bill Depth_
+The ratio of bill length to bill depth was used as an indicator of overall bill shape, as the two morphometric parameters for the penguins' bills provided in the dataset. 
+A one-way ANOVA was conducted to compare the mean ratio across the three species, testing for significant differences in bill morphology. 
+If significant results were found, Tukey's Honest Significant Difference (HSD) test was used for pairwise comparisons to identify where the species differences were coming from.
 
-ANOVA tests assess whether there are any statistically significant differences in bill morphology, bill length, or bill depth between the species. The Tukey-Kramer test provides pairwise comparisons to identify which species pairs differ significantly from each other.
+_Individual Measurement Comparisons: Bill Length and Bill Depth_
+To further examine morphological differences, I compared bill length and bill depth between the species using pairwise t-tests between each pair of penguin species (Adélie vs. Chinstrap, Adélie vs. Gentoo, and Chinstrap vs. Gentoo).
+Additionally, I calculated the 95% confidence intervals for the differences in means between each pair of species, which provide a precise estimate of the potential range for the true differences in bill morphology. These intervals help interpret the significance of the observed differences and whether they are meaningful in the context of ecological adaptation.
 
-Statistical Test: One-Way ANOVA I will use one-way ANOVA to compare the mean ratio of bill length to bill depth across the three species (Adélie, Chinstrap, and Gentoo). ANOVA is appropriate for this analysis because I am comparing the means of a continuous variable (bill ratio) across more than two groups (species).
-
-Rationale for ANOVA: ANOVA is ideal for testing if there are significant differences in the means of the bill ratio across the three species. If the ANOVA reveals a significant result, this would indicate that at least one species has a significantly different bill morphology in terms of its shape (ratio of length to depth).
-
-Post-Hoc Analysis: If the ANOVA test shows significant differences, I will conduct post-hoc tests, such as Tukey’s HSD (Honest Significant Difference), to determine which specific species pairs (e.g., Adélie vs. Gentoo) show significant differences in bill morphology. This is necessary to identify exactly where the differences lie between species.
-
-2.  Bill Length and Bill Depth Comparisons Following the ratio analysis, I will delve deeper into the individual measurements of bill length and bill depth. This will allow for a more detailed comparison of these specific morphological features across the species.
-
-Statistical Test: One-Way ANOVA (for normally distributed data) I will first assess the normality of bill length and bill depth data for each species using tests such as the Shapiro-Wilk test. If the data are normally distributed, I will use one-way ANOVA to compare the means of bill length and bill depth across the three species.
-
-Rationale for ANOVA: ANOVA is again used here to determine if there are significant differences in the bill length and bill depth among the species. A significant result would indicate that the species exhibit different morphologies in these specific aspects, which could be linked to their feeding behavior and ecological niches. I used this dataset to examine the culmen shapes of the different species, specifically, I will be focusing on two measurements - bill length and bill depth - as indicators of bill morphology.
-
-To provide more precise estimates of the species’ bill characteristics, I also calculated 95% confidence intervals for both bill length and bill depth. Confidence intervals are important because they offer a range within which the true population mean is likely to lie, allowing for a better understanding of the variability and uncertainty around the estimates. By including these intervals, I am able to give a more robust and complete picture of the data, helping to interpret the significance of the differences observed in the ANOVA and Tukey-Kramer tests.
 
 ## Analysis
 
-```{r packages}
-
-#renv::init()
-#load all the required packages
-library(here) # to specify the directory
-library(tinytex) 
-library(renv) # to  
-library(janitor) # for cleaning the data
-library(tidyverse) # for cleaning the data
-library(palmerpenguins) # contains the dataset
-library(dplyr) #for manipulating the data
-library(ggplot2) #for making plots
-library(lme4) #for making linear models
-library(grid) #for making multi-panel figures
-library(gridExtra) #for making multi-panel figures
-library(ggsignif) #for adding significance stars to plots
-
-#renv::snapshot()
-```
-
-### Packages
-
-All the necessary packages are store in the renv.lock file. The renv package manages the isolated environment for your R project, so the package versions are specific to the project rather than being installed globally. When you run renv::restore(), it will install the packages as described in the renv.lock file, ensuring that you and anyone else using the project have the same versions of the necessary packages. This process will make your project environment easily reproducible across different systems.
-
-Note: install renv package (install.packages("renv") if not already installed.
 ```{r}
-renv::restore() #to load up the necessary packages.
+renv::restore()
 ```
+
+
+```{r packages, results=hide}
+# load the required packages
+library(here)        # for specifying the directory
+library(tinytex)     # for LaTeX-related tasks
+library(renv)        # for environment management
+library(palmerpenguins)  # for dataset
+library(janitor)     # for cleaning data
+library(tidyverse)   # for data manipulation and visualization
+library(dplyr)       # for data manipulation
+library(ggplot2)     # for data visualization
+library(lme4)        # for linear models
+library(rstatix)     # for pair-wise t-tests
+library(grid)        # for graphical layout
+library(gridExtra)   # for graphical layout
+library(ggsignif)    # for adding significance annotations to ggplot2 plots
+```
+
 
 ```{r load-&-save-data}
 #Load the raw data and save it
@@ -116,27 +102,25 @@ write_csv(analysis_data, here("data", "analysis_data.csv"))
 source(here("functions", "plotting.R"))
 bad_figure <- plot_bad_figure(analysis_data)
 print(bad_figure)
-
+```
+```{r save-bad-figure, echo=FALSE}
 #Save plot 
 #gsave("exploratory_figure.png", 
        #plot = exploratory_figure, 
        #width = 8, height = 6, units = "in", dpi = 300) 
 ```
+
 *Figure 1: A bar chart of mean bill length vs. mean bill depth for three species of _Pygoscelis_ penguins*
 
 b)  Write about how your design choices mislead the reader about the underlying data (200-300 words).
 
-This figure displays the mean bill length and depth for Adelie, Chinstrap, and Gentoo penguins. However, several design choices in this figure mislead the reader about the underlying data:
+The figure displaying mean bill length and depth for Adélie, Chinstrap, and Gentoo penguins suffers from several design flaws that mislead the reader about the underlying data. The use of a bar chart to represent relationships between two continuous variables is inappropriate, as bar charts are better suited for categorical data and oversimplify the relationship being analyzed. A scatter plot would more effectively illustrate variation and trends between continuous measurements. Furthermore, the figure presents only summary statistics (mean values) without raw data points or indications of data distribution, preventing readers from assessing variability, outliers, or patterns within each species, which are critical for understanding the true complexity of the data.
 
--   A bar chart is a poor choice for displaying relationships between two continuous variables. Bar charts are typically used for categorical data, and applying them to continuous data (such as bill length and depth) oversimplifies the relationship. A scatter plot would be much more suited for representing .. []
+Additionally, the figure lacks error bars or representations of variability, such as standard deviations or confidence intervals, which are essential for evaluating the precision of the means and the reliability of comparisons. Without them, the differences between species may appear more significant or consistent than they actually are. 
 
--   The figure only shows the summary statistics (mean values) for each species but does not include any raw data points or an indication of the data distribution. Without this, the reader cannot assess variability, outliers, or trends within each species, which are critical for understanding the data. This omission hides the true complexity and spread of the data. []
+Furthermore, some of the stylistic choices made for the graph make it harder to interpret the data. Firstly, the choice of similar colors for the three species which makes it difficult to differentiate between species at a glance; more contrasting colors or distinct patterns would improve clarity. In addition, the axis labels are vague - not indicating what exactly is being measured for length and depth - and fail to convey the units of measurement, detracting from the figure’s interpretability.
 
--   The plot also lacks error bars or any indication of variability, such as standard deviation or confidence intervals. These are essential for understanding the precision of the mean values and the reliability of the comparisons between species. Without this information, the plot may give the false impression that the differences between species are more significant than they actually are []
-
--   The colors used for the three species are all very similar and difficult to distinguish at a glance. This makes it hard for the viewer to quickly differentiate between species, even with a legend, and could cause confusion. More contrasting colors or patterns should have been used to make the distinction clearer.
-
--   The axis labels are not informative and do not covey the units. Clearer labels would indicate what is being measured and ...
+Importance of science communication ...
 
 **QUESTION 2: Good exploratory figure**
 
@@ -145,20 +129,20 @@ This figure displays the mean bill length and depth for Adelie, Chinstrap, and G
 source(here("functions", "plotting.R"))
 exploratory_figure <- plot_exploratory_figure(analysis_data)
 exploratory_figure # Show the plot
-
+```
+```{r save-exploratory-figure, echo=FALSE}
 #Save plot 
 #gsave("exploratory_figure.png", 
        #plot = exploratory_figure, 
-       #width = 8, height = 6, units = "in", dpi = 300)  
+       #width = 8, height = 6, units = "in", dpi = 300) 
 ```
+ 
 
-*Figure 2: Scatterplot showing the distribution of bill lengths and bill depths for three species of Pygoscelis* penguins
+*Figure 2: Scatterplot showing the distribution of bill lengths and bill depths for three species of _Pygoscelis_ penguins*
 
-Figure 2.A, we observe that the distribution of bill length and bill depth varies between the three penguin species. Adelie penguins tend to have smaller bill lengths and depths compared to the other species, while Chinstrap penguins show intermediate values. Gentoo penguins, on the other hand, display larger bills, with both the length and depth showing more variability across individuals...
+Figure 2 provides an exploratory visualization of the distribution of bill length and bill depth among three species of *Pygoscelis* penguins, revealing distinct patterns in their morphospace. Adélie penguins tend to have relatively shorter but wider bills (greater bill depth), while Gentoo penguins exhibit longer and narrower bills. Chinstrap penguins occupy an intermediate space, showing bill depths similar to Adélie penguins but lengths closer to those of Gentoo penguins. This clear separation suggests potential species-specific differences in bill morphology.
 
-The dsitrbution ,,,
-
-Howver to fully deterine whetehr these differeces are we ...
+However, it is important to note that this figure is purely exploratory. While it highlights potential patterns, no definitive conclusions about interspecies differences can be drawn without conducting appropriate statistical tests to assess the significance of these observations.
 
 ### Statistical analysis
 
@@ -179,92 +163,126 @@ TukeyHSD(aov(bill_morphology_model))
 
 #### Differences in bill length
 
-```{r bill-length-ANOVA}
-# ANOVA to test for differences in bill length between penguin species
-bill_length_model <- lm(bill_length_mm ~ species, data = analysis_data)
-anova(bill_length_model)
-```
-
-```{r bill-length-Tukey-Kramer}
-# Tukey-Kramer test for pairwise comparisons of bill length between penguin species
-TukeyHSD(aov(bill_length_model))
-```
-
-```{r bill-length-CIs}
-# Pipe to calculate 95% confidence intervals for bill length
-CIs_bill_length <- analysis_data %>%
-  group_by(species) %>%
-  summarise(
-    mean_length = mean(bill_length_mm, na.rm = TRUE),
-    se_length = sd(bill_length_mm, na.rm = TRUE) / sqrt(n()),
-    lower_length_ci = mean_length - 1.96 * se_length,
-    upper_length_ci = mean_length + 1.96 * se_length
+```{r bill-length-t-test}
+# Pairwise t-tests for bill length between species with confidence intervals
+bill_length_t_tests <- analysis_data %>%
+  pairwise_t_test(
+    bill_length_mm ~ species,      # Specify the variables
+    paired = FALSE,                # Unpaired data
+    p.adjust.method = "bonferroni" # Bonferroni correction for multiple tests
   )
 
-print(CIs_bill_length)
+# Print the result
+print(bill_length_t_tests)
 ```
 
 #### Differences in bill depth
 
-```{r bill-depth-ANOVA}
-# ANOVA to test for differences in bill depth between penguin species
-bill_depth_model <- lm(bill_depth_mm ~ species, data = analysis_data)
-anova(bill_depth_model)
-```
-
-```{r bill-depth-Tukey-Kramer}
-# Tukey-Kramer test for pairwise comparisons of bill depth between penguin species
-TukeyHSD(aov(bill_depth_model))
-```
-
-```{r bill-depth-CIs}
-# Pipe to calculate confidence intervals for bill depth
-CIs_bill_depth <- analysis_data %>%
-  group_by(species) %>%
-  summarise(
-    mean_depth = mean(bill_depth_mm, na.rm = TRUE),
-    se_depth = sd(bill_depth_mm, na.rm = TRUE) / sqrt(n()),
-    lower_depth_ci = mean_depth - 1.96 * se_depth,
-    upper_depth_ci = mean_depth + 1.96 * se_depth
+```{r bill-depth-t-test}
+# Pairwise t-tests for bill depth between species 
+bill_depth_t_tests <- analysis_data %>%
+  pairwise_t_test(
+    bill_depth_mm ~ species,       # Specify the variable and group
+    paired = FALSE,                 # Specify the data is unpaired
+    p.adjust.method = "bonferroni"  # Adjust p-values for multiple comparisons
   )
 
-print(CIs_bill_depth)
+# Print the result
+bill_depth_t_tests
 ```
 
 ## Results
 
-```{r result-figure-plots}
+### All penguin species show significant differences in bill morphology 
+
+
+```{r plot-figure-3}
 source(here("functions", "plotting.R"))
-results_figure_1 <- results_plot_1(analysis_data)
+figure_3 <- results_plot_1(analysis_data)
 
+figure_3
+```
+```{r save-figure-3, echo=FALSE}
 #Save plot 
 #gsave("exploratory_figure.png", 
        #plot = exploratory_figure, 
        #width = 8, height = 6, units = "in", dpi = 300)
-       
-results_figure_2 <- results_plot_2(analysis_data)
+```
 
-#Save plot 
-#gsave("exploratory_figure.png", 
-       #plot = exploratory_figure, 
-       #width = 8, height = 6, units = "in", dpi = 300)
+
+Figure 3
+
+From figrue 3 we can see that bill morphology is signifciantly between species, with significant annotations (***p < 0.001) for all pairwise comparisons between species.
+A one-way analysis of variance (ANOVA) revealed significant differences in bill morphology across the three species (F(2, 330) = 1451.7, p < 2.2e-16). This indicates that bill morphology measurements, such as bill length, depth, and shape, differ significantly among the species. Tukey’s post-hoc test indicated that all pairwise comparisons between the species were statistically significant, with the following results:
+
+Chinstrap vs. Adélie: Difference = 0.532, 95% CI [0.477, 0.587], p < 0.001
+Gentoo vs. Adélie: Difference = 1.055, 95% CI [1.009, 1.101], p < 0.001
+Gentoo vs. Chinstrap: Difference = 0.523, 95% CI [0.466, 0.580], p < 0.001
+
+### Penguins bills may be adapted to their feeding ecologies
+
+```{r plot-figure-4}
+source(here("functions", "plotting.R"))
+figure_4a <- results_plot_2(analysis_data)
+figure_4b <- results_plot_3(analysis_data)
 
 #Make a multi-panel figure
-grid.arrange(results_figure_1,  results_figure_2,  nrow = 2)
+# Adjust heights to allocate more space to each plot
+grid.arrange(figure_4a, figure_4b, ncol = 2)
 
-grid.text("A", x = 0.07, y = 0.95, gp = gpar(fontsize = 12)) #Adds label 'A' to first graph
+grid.text("A", x = 0.055, y = 0.95, gp = gpar(fontsize = 12)) #Adds label 'A' to first graph
 grid.text("B", x = 0.57, y = 0.95, gp = gpar(fontsize = 12)) #Adds label 'B' to second graph
-
 ```
-*Figure 3. A plot ... *
+```{r save-figure-4, echo=FALSE}
+#Save plot 
+#gsave("exploratory_figure.png", 
+       #plot = exploratory_figure, 
+       #width = 8, height = 6, units = "in", dpi = 300)
+```
+
+*Figure 4. A plot ... *
+
+### Differences in bill deth and bill legnth
+
+
+Figure 2 shows the relationship between bill length and bill depth for each species, with confidence intervals for mean values. Indeed these 
+
+After analysisng the differences in 
+
+The ANOVA results indicate that there is a highly significant effect of species on bill_morphology. In other words, the bill morphology measurements (likely length and/or depth) differ significantly among the three species.
+Form the tukey: All pairwise comparisons are statistically significant (p-value = 0 for all pairs).
+The confidence intervals for the differences do not cross zero, confirming the significant differences.
+Gentoo penguins have the largest average bill morphology values, followed by Chinstrap, and then Adélie.
+
+Beak Shape Ratio: The ratio of culmen length to depth significantly differs across species. Gentoo penguins have the largest ratio, followed by Chinstrap penguins, and Adelie penguins have the smallest ratio.
+Interpretation of Shape: Since the ratio is a measure of beak shape, this suggests that Gentoo penguins have relatively longer, shallower beaks, while Adelie penguins have shorter, deeper beaks.
+
+Bill Length Trends:
+
+Chinstrap penguins have the longest bills, followed by Gentoo, and then Adélie penguins.
+Significant differences exist between all species pairs.
+Magnitude of Differences:
+
+The differences between Chinstrap and Adélie, as well as Gentoo and Adélie, are much larger than the difference between Gentoo and Chinstrap.
+These results highlight clear interspecies variations in bill length.
+
+
+Beak Length: Chinstrap and Gentoo penguins both have significantly longer beaks than Adelie penguins. Gentoo penguins have slightly shorter beaks than Chinstrap penguins, though this difference is still statistically significant.
+
+
+Beak Depth: Gentoo penguins have significantly deeper beaks compared to both Adelie and Chinstrap penguins. There is no significant difference in beak depth between Chinstrap and Adelie penguins. 
+
+ill Depth Trends:
+
+Gentoo penguins have significantly smaller bill depths than both Adélie and Chinstrap penguins.
+No significant difference in bill depth is observed between Adélie and Chinstrap penguins.
+
+They show clear patterns of differences in beak morphology (both length and depth) across species. The TukeyHSD results reveal specific comparisons, quantifying the size and direction of differences between species.
+
+These findings align well with feeding habits.
 
 ## Conclusion
 
-Beak Shape Ratio: The ratio of culmen length to depth significantly differs across species. Gentoo penguins have the largest ratio, followed by Chinstrap penguins, and Adelie penguins have the smallest ratio.
-
-Interpretation of Shape: Since the ratio is a measure of beak shape, this suggests that Gentoo penguins have relatively longer, shallower beaks, while Adelie penguins have shorter, deeper beaks.
-
-Beak Length: Chinstrap and Gentoo penguins both have significantly longer beaks than Adelie penguins. Gentoo penguins have slightly shorter beaks than Chinstrap penguins, though this difference is still statistically significant. Beak Depth: Gentoo penguins have significantly deeper beaks compared to both Adelie and Chinstrap penguins. There is no significant difference in beak depth between Chinstrap and Adelie penguins. Are the results informative? Yes, these results are informative because:
 
 They show clear patterns of differences in beak morphology (both length and depth) across species. The TukeyHSD results reveal specific comparisons, quantifying the size and direction of differences between species.
 
@@ -291,13 +309,16 @@ As the cliamte changes, wih rapidly decling extent and duration of sea ice in An
 
 ### c) Reflect on your experience running their code. (300-500 words)
 
--   *What elements of your partner's code helped you to understand their data pipeline?*
 
--   *Did it run? Did you need to fix anything?*
+When I ran my partner's code, I found it to be well-organized and accessible, which greatly enhanced my understanding of the data pipeline. The code was structured into clearly defined sections with informative headings, making navigation intuitive. Each section was accompanied by comments explaining its purpose, which helped me follow the workflow and understand how the parts fit together. This thoughtful structure and clarity made the code easy to follow, even for someone unfamiliar with the dataset.
+A standout feature was the use of functions to break down complex tasks, which decluttered the main script and improved readability. This modular approach streamlined the process and allowed for easy reuse of code. I appreciated that the functions were called at the start, making their role within the script immediately clear. This separation of concerns not only enhanced organization but also made debugging and testing individual components straightforward.
+The use of the renv package to manage dependencies was another strong point. By ensuring access to the correct versions of required packages, the code was highly reproducible and avoided version-related errors. Additionally, listing all required libraries at the beginning of the script helped streamline the setup process and ensured that no dependencies were overlooked. These thoughtful design choices made setting up the environment much easier and faster.
+However, the code relies heavily on access to specific files in the repository, which is not clearly communicated. Without these files, the code cannot run properly. While this approach keeps the code itself uncluttered, the lack of a README.md file explaining these dependencies is a drawback. Adding a README file with setup instructions and a list of required files would improve accessibility and reproducibility, ensuring others can use the code without confusion.
 
--   *What suggestions would you make for improving their code to make it more understandable or reproducible, and why?*
+The code executed without major issues, and I did not need to fix anything, though I had to ensure all necessary files and dependencies were in place. The use of renv simplified this process significantly, allowing the project to run seamlessly in its intended environment.
 
--   *If you needed to alter your partner's figure using their code, do you think that would be easy or difficult, and why?*
+Overall, the code was well-prepared and reproducible, with only minor improvements needed to make it even more user-friendly and accessible to a broader audience.
+
 
 ### d) Reflect on your own code based on your experience with your partner's code and their review of yours. (300-500 words)
 
