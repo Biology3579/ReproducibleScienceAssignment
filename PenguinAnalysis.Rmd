@@ -3,8 +3,7 @@ title: "PenguinsAnalysis"
 author: "Biology3579"
 date: "2024-12-6"
 output:
-  pdf_document: 
-    latex_engine: xelatex
+  html_document: default
 geometry: left = 0.5cm, right = 1cm, top = 1cm, bottom = 1cm
 mainfont: Arial
 ---
@@ -102,7 +101,7 @@ glimpse(analysis_data) # Quick summary of analysis data
 
 ### Exploratory analysis
 
-```{r}
+```{r bad-figure-plot, fig.align = "center", echo=FALSE}
 source(here("functions", "plotting.R"))
 bad_figure <- plot_bad_figure(analysis_data)
 print(bad_figure)
@@ -130,7 +129,7 @@ This figure displays the mean bill length and depth for Adelie, Chinstrap, and G
 
 **Good exploratory figure**
 
-```{r  exploratory-figure-code, fig.align = "center"}
+```{r  exploratory-figure-plot, fig.align = "center"}
 
 source(here("functions", "plotting.R"))
 exploratory_figure <- plot_exploratory_figure(analysis_data)
@@ -162,7 +161,7 @@ anova_morphology <- aov(bill_morphology ~ species, data = analysis_data)
 summary(anova_morphology)
 ```
 
-```{r}
+```{r bill-morphology-Tukey-Kramer}
 # Tukey-Kramer test for pairwise comparisons of bill morphology between penguin species
 tukey_results_morphology <- TukeyHSD(aov(bill_morphology ~ species, data = analysis_data))
 print(tukey_results_morphology)
@@ -176,7 +175,7 @@ anova_length <- aov(bill_length_mm ~ species, data = analysis_data)
 summary(anova_length)
 ```
 
-```{r}
+```{r bill-length-Tukey-Kramer}
 # Tukey-Kramer test for pairwise comparisons of bill length between penguin species
 tukey_results_length <- TukeyHSD(aov(bill_length_mm ~ species, data = analysis_data))
 print(tukey_results_length)
@@ -226,7 +225,7 @@ print(CIs_bill_depth)
 
 ##Results
 
-```{r}
+```{r result-figure-plots}
 source(here("functions", "plotting.R"))
 results_figure_1 <- results_plot_1(analysis_data)
 

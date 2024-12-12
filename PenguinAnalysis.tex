@@ -1,0 +1,777 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+    \setmainfont[]{Arial}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[left = 0.5cm, right = 1cm, top = 1cm, bottom =
+1cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={PenguinsAnalysis},
+  pdfauthor={Biology3579},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{PenguinsAnalysis}
+\author{Biology3579}
+\date{2024-12-6}
+
+\begin{document}
+\maketitle
+
+\subsubsection{Introduction}\label{introduction}
+
+The genus Pygoscelis, which includes Adélie (\emph{Pygoscelis adeliae}),
+Chinstrap (\emph{Pygoscelis antarcticus}), and Gentoo (\emph{Pygoscelis
+papua}) penguins, occupies overlapping ranges across the Western
+Antarctic Peninsula. Despite this sympatric distribution, these species
+exhibit distinct feeding ecologies, ranging from specialist to
+generalist strategies, allowing them to occupy different ecological
+niches and minimising competition. Diet composition analysis of
+Chinstrap penguins shows a high degree of specialization, with their
+diet consisting almost exclusively of the krill species \emph{Euphausia
+superba}. In contrast, while Adélie penguins also rely heavily on krill,
+their diet is more varied, consisting of both \emph{E. superba} and
+\emph{E. crystallorophias} krill species, along with notothenioid fish.
+Dietary analyses of Gentoo penguins reveal that this species has the
+most varied feeding habits, with a generalist diet consisting of a broad
+range of crustaceans and fish. Interestingly, krill constitutes a
+smaller portion of their diet compared to other \emph{Pygoscelis}
+species, highlighting a distinct difference in the feeding ecology of
+this species.
+
+The bill morphology of penguins is a critical aspect of their feeding
+ecology, as it directly influences their ability to capture and consume
+different prey types. A study by Chávez-Hoffmeister (2020) found that
+penguin species display distinct bill shapes that are closely tied to
+their specific feeding strategies {[}{]}. For example, krill-eating
+penguins tend to have wider beaks and broader jaws, which help them
+efficiently filter and capture krill. In contrast, fish-eating species
+possess narrower, more robust beaks designed to exert greater bite
+force, allowing them to grasp and hold onto slippery fish more
+effectively. These morphological adaptations are essential for the
+species' feeding behavior, enabling them to exploit their preferred prey
+types. As such, each penguin species requires bill morphology that is
+finely tuned to its ecological niche, ensuring efficient foraging and
+survival in their specific environments.
+
+\subsubsection{Hypothesis}\label{hypothesis}
+
+Based on the importance of bill morphology in feeding behaviors and the
+differences in feeding ecologies between the species, I hypothesize that
+the three penguin species will exhibit distinct bill morphologies that
+reflect their specific feeding strategies. Specifically, since Gentoo
+penguins have a much more diverse diet compared to the other two
+species, I expect them to exhibit the most distinct bill morphology.
+
+\subsubsection{Methods}\label{methods}
+
+\paragraph{Data}\label{data}
+
+To investigate the differences in bill morphology across penguin
+species, I will be utilizing the palmerpenguins dataset, which is
+derived from a study conducted by Gorman et al.~(2014) on Pygoscelis
+penguins in the Palmer Archipelago, located west of the Antarctic
+Peninsula, near Anvers Island. The data were collected from 2007 to 2009
+across three islands: Biscoe (64° 48.9'S, 63° 46.9'W), Torgersen (64°
+46.9'S, 64° 04.9'W), and Dream (64° 43.9'S, 64° 13.9'W). This dataset
+includes multiple measurements taken on three species of Pygoscelis
+penguins---Adélie, Chinstrap, and Gentoo---observed on these three
+islands, including body measurements (culmen length, culmen depth,
+flipper length, and body mass), sex information, nesting details
+(including clutch completion and egg laying dates), and stable isotope
+data (Δ15N and Δ13C) for 344 individual penguins across three species.
+
+\paragraph{Statistical analysis}\label{statistical-analysis}
+
+To examine the differences in bill morphology across the three penguin
+speciesI will focus on two key measurements: bill length and bill depth.
+These measurements serve as indicators of bill morphology, providing
+insights into how adaptations to feeding strategies differ among species
+with varying diets.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Ratio of Bill Length to Bill Depth The first step in my analysis will
+  involve examining the ratio of bill length to bill depth for each
+  species. This ratio is a useful indicator of overall bill shape and
+  can help highlight differences in bill morphology that are associated
+  with each species' feeding ecology. For example, a more specialized
+  feeder may have a differently proportioned bill compared to a more
+  generalist species.
+\end{enumerate}
+
+ANOVA tests assess whether there are any statistically significant
+differences in bill morphology, bill length, or bill depth between the
+species. The Tukey-Kramer test provides pairwise comparisons to identify
+which species pairs differ significantly from each other.
+
+Statistical Test: One-Way ANOVA I will use one-way ANOVA to compare the
+mean ratio of bill length to bill depth across the three species
+(Adélie, Chinstrap, and Gentoo). ANOVA is appropriate for this analysis
+because I am comparing the means of a continuous variable (bill ratio)
+across more than two groups (species).
+
+Rationale for ANOVA: ANOVA is ideal for testing if there are significant
+differences in the means of the bill ratio across the three species. If
+the ANOVA reveals a significant result, this would indicate that at
+least one species has a significantly different bill morphology in terms
+of its shape (ratio of length to depth).
+
+Post-Hoc Analysis: If the ANOVA test shows significant differences, I
+will conduct post-hoc tests, such as Tukey's HSD (Honest Significant
+Difference), to determine which specific species pairs (e.g., Adélie
+vs.~Gentoo) show significant differences in bill morphology. This is
+necessary to identify exactly where the differences lie between species.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Bill Length and Bill Depth Comparisons Following the ratio analysis, I
+  will delve deeper into the individual measurements of bill length and
+  bill depth. This will allow for a more detailed comparison of these
+  specific morphological features across the species.
+\end{enumerate}
+
+Statistical Test: One-Way ANOVA (for normally distributed data) I will
+first assess the normality of bill length and bill depth data for each
+species using tests such as the Shapiro-Wilk test. If the data are
+normally distributed, I will use one-way ANOVA to compare the means of
+bill length and bill depth across the three species.
+
+Rationale for ANOVA: ANOVA is again used here to determine if there are
+significant differences in the bill length and bill depth among the
+species. A significant result would indicate that the species exhibit
+different morphologies in these specific aspects, which could be linked
+to their feeding behavior and ecological niches. I used this dataset to
+examine the culmen shapes of the different species, specifically, I will
+be focusing on two measurements - bill length and bill depth - as
+indicators of bill morphology.
+
+To provide more precise estimates of the species' bill characteristics,
+I also calculated 95\% confidence intervals for both bill length and
+bill depth. Confidence intervals are important because they offer a
+range within which the true population mean is likely to lie, allowing
+for a better understanding of the variability and uncertainty around the
+estimates. By including these intervals, I am able to give a more robust
+and complete picture of the data, helping to interpret the significance
+of the differences observed in the ANOVA and Tukey-Kramer tests.
+
+\subsection{Analysis}\label{analysis}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#load all the required packages}
+\FunctionTok{library}\NormalTok{(tidyverse) }\CommentTok{\#for cleaning the data}
+\FunctionTok{library}\NormalTok{(janitor) }\CommentTok{\#for cleaning the data}
+\FunctionTok{library}\NormalTok{(palmerpenguins) }\CommentTok{\#contains the dataset}
+\FunctionTok{library}\NormalTok{(here) }\CommentTok{\#to specify the directory}
+\FunctionTok{library}\NormalTok{(ggplot2) }\CommentTok{\#for making plots}
+\FunctionTok{library}\NormalTok{(lme4) }\CommentTok{\#for making linear models}
+\FunctionTok{library}\NormalTok{(grid) }\CommentTok{\#for making multi{-}panel figures}
+\FunctionTok{library}\NormalTok{(gridExtra) }\CommentTok{\#for making multi{-}panel figures}
+\FunctionTok{library}\NormalTok{(dplyr) }\CommentTok{\#for manipulating the data}
+\FunctionTok{library}\NormalTok{(ggsignif) }\CommentTok{\#for adding significance stars to plots}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Load the raw data and save it}
+
+\FunctionTok{write.csv}\NormalTok{(penguins\_raw, }\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"penguins\_raw.csv"}\NormalTok{)) }\CommentTok{\#To write data to csv}
+\NormalTok{penguins\_raw }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{,}\StringTok{"penguins\_raw.csv"}\NormalTok{)) }\CommentTok{\#Load data }
+
+\FunctionTok{glimpse}\NormalTok{(penguins\_raw) }\CommentTok{\# Quick summary of the structure of the raw data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 344
+## Columns: 18
+## $ X                   <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,~
+## $ studyName           <chr> "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL07~
+## $ Sample.Number       <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,~
+## $ Species             <chr> "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pen~
+## $ Region              <chr> "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", ~
+## $ Island              <chr> "Torgersen", "Torgersen", "Torgersen", "Torgersen"~
+## $ Stage               <chr> "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult~
+## $ Individual.ID       <chr> "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N~
+## $ Clutch.Completion   <chr> "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "N~
+## $ Date.Egg            <chr> "2007-11-11", "2007-11-11", "2007-11-16", "2007-11~
+## $ Culmen.Length..mm.  <dbl> 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1~
+## $ Culmen.Depth..mm.   <dbl> 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1~
+## $ Flipper.Length..mm. <int> 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 1~
+## $ Body.Mass..g.       <int> 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475~
+## $ Sex                 <chr> "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE", ~
+## $ Delta.15.N..o.oo.   <dbl> NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.1871~
+## $ Delta.13.C..o.oo.   <dbl> NA, -24.69454, -25.33302, NA, -25.32426, -25.29805~
+## $ Comments            <chr> "Not enough blood for isotopes.", NA, NA, "Adult n~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Clean the raw data and save it separately}
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"cleaning\_and\_curating.R"}\NormalTok{))}
+\NormalTok{penguins\_clean }\OtherTok{\textless{}{-}} \FunctionTok{cleaning\_penguins}\NormalTok{(penguins\_raw)}
+\FunctionTok{write\_csv}\NormalTok{(penguins\_clean, }\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"penguins\_clean.csv"}\NormalTok{))}
+\FunctionTok{glimpse}\NormalTok{(penguins\_clean) }\CommentTok{\# Quick summary of clean data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 344
+## Columns: 18
+## $ x                 <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1~
+## $ study_name        <chr> "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0708~
+## $ sample_number     <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1~
+## $ species           <chr> "Adelie", "Adelie", "Adelie", "Adelie", "Adelie", "A~
+## $ region            <chr> "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "A~
+## $ island            <chr> "Torgersen", "Torgersen", "Torgersen", "Torgersen", ~
+## $ stage             <chr> "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, ~
+## $ individual_id     <chr> "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A~
+## $ clutch_completion <chr> "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No"~
+## $ date_egg          <chr> "2007-11-11", "2007-11-11", "2007-11-16", "2007-11-1~
+## $ culmen_length_mm  <dbl> 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, ~
+## $ culmen_depth_mm   <dbl> 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, ~
+## $ flipper_length_mm <int> 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186~
+## $ body_mass_g       <int> 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, ~
+## $ sex               <chr> "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE", "F~
+## $ delta_15_n_o_oo   <dbl> NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718,~
+## $ delta_13_c_o_oo   <dbl> NA, -24.69454, -25.33302, NA, -25.32426, -25.29805, ~
+## $ comments          <chr> "Not enough blood for isotopes.", NA, NA, "Adult not~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Curate the clean data and save it separately}
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"cleaning\_and\_curating.R"}\NormalTok{))}
+\NormalTok{analysis\_data }\OtherTok{\textless{}{-}} \FunctionTok{curating\_penguins\_clean}\NormalTok{(penguins\_clean)}
+\FunctionTok{write\_csv}\NormalTok{(analysis\_data, }\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"analysis\_data.csv"}\NormalTok{))}
+
+\FunctionTok{glimpse}\NormalTok{(analysis\_data) }\CommentTok{\# Quick summary of analysis data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 333
+## Columns: 9
+## $ x               <int> 1, 2, 3, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20, 2~
+## $ species         <fct> Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie~
+## $ island          <chr> "Torgersen", "Torgersen", "Torgersen", "Torgersen", "T~
+## $ individual_id   <chr> "N1A1", "N1A2", "N2A1", "N3A1", "N3A2", "N4A1", "N4A2"~
+## $ bill_length_mm  <dbl> 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 41.1, 38.6, ~
+## $ bill_depth_mm   <dbl> 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 17.6, 21.2, ~
+## $ body_mass_g     <dbl> 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 3800, ~
+## $ sex             <fct> male, female, female, female, male, female, male, fema~
+## $ bill_morphology <dbl> 2.090909, 2.270115, 2.238889, 1.901554, 1.907767, 2.18~
+\end{verbatim}
+
+\subsubsection{Exploratory analysis}\label{exploratory-analysis}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"plotting.R"}\NormalTok{))}
+\NormalTok{bad\_figure }\OtherTok{\textless{}{-}} \FunctionTok{plot\_bad\_figure}\NormalTok{(analysis\_data)}
+\FunctionTok{print}\NormalTok{(bad\_figure)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{PenguinAnalysis_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Save plot }
+\CommentTok{\#gsave("exploratory\_figure.png", }
+       \CommentTok{\#plot = exploratory\_figure, }
+       \CommentTok{\#width = 8, height = 6, units = "in", dpi = 300) }
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Figure 1: A bar chart of mean bill length vs.~mean bill depth for
+three species of Pygoscelis} penguins
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Write about how your design choices mislead the reader about the
+  underlying data (200-300 words).
+\end{enumerate}
+
+This figure displays the mean bill length and depth for Adelie,
+Chinstrap, and Gentoo penguins. However, several design choices in this
+figure mislead the reader about the underlying data:
+
+\begin{itemize}
+\item
+  A bar chart is a poor choice for displaying relationships between two
+  continuous variables. Bar charts are typically used for categorical
+  data, and applying them to continuous data (such as bill length and
+  depth) oversimplifies the relationship. A scatter plot would be much
+  more suited for representing .. {[}{]}
+\item
+  The figure only shows the summary statistics (mean values) for each
+  species but does not include any raw data points or an indication of
+  the data distribution. Without this, the reader cannot assess
+  variability, outliers, or trends within each species, which are
+  critical for understanding the data. This omission hides the true
+  complexity and spread of the data. {[}{]}
+\item
+  The plot also lacks error bars or any indication of variability, such
+  as standard deviation or confidence intervals. These are essential for
+  understanding the precision of the mean values and the reliability of
+  the comparisons between species. Without this information, the plot
+  may give the false impression that the differences between species are
+  more significant than they actually are {[}{]}
+\item
+  The colors used for the three species are all very similar and
+  difficult to distinguish at a glance. This makes it hard for the
+  viewer to quickly differentiate between species, even with a legend,
+  and could cause confusion. More contrasting colors or patterns should
+  have been used to make the distinction clearer.
+\item
+  The axis labels are not informative and do not covey the units.
+  Clearer labels would indicate what is being measured and \ldots{}
+\end{itemize}
+
+\textbf{Good exploratory figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"plotting.R"}\NormalTok{))}
+\NormalTok{exploratory\_figure }\OtherTok{\textless{}{-}} \FunctionTok{plot\_exploratory\_figure}\NormalTok{(analysis\_data)}
+\NormalTok{exploratory\_figure }\CommentTok{\# Show the plot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{PenguinAnalysis_files/figure-latex/exploratory-figure-code-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Save plot }
+\CommentTok{\#gsave("exploratory\_figure.png", }
+       \CommentTok{\#plot = exploratory\_figure, }
+       \CommentTok{\#width = 8, height = 6, units = "in", dpi = 300)  }
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Figure 2: Scatterplot showing the distribution of bill lengths and
+bill depths for three species of Pygoscelis} penguins
+
+Figure 2.A, we observe that the distribution of bill length and bill
+depth varies between the three penguin species. Adelie penguins tend to
+have smaller bill lengths and depths compared to the other species,
+while Chinstrap penguins show intermediate values. Gentoo penguins, on
+the other hand, display larger bills, with both the length and depth
+showing more variability across individuals\ldots{}
+
+The dsitrbution ,,,
+
+Howver to fully deterine whetehr these differeces are we \ldots{}
+
+\subsubsection{Statistical analysis}\label{statistical-analysis-1}
+
+I first carried out an ANOVA, followed by Tukey-Kramer tests, to
+determine the general differences in bill morphology, using the bill
+length-to-depth ratio as a proxy for this. I then further investigated
+specific differences by testing bill length and bill depth separately to
+understand the variation between species. To provide more precise
+estimates of the species' bill characteristics, I also calculated 95\%
+confidence intervals for both bill length and bill depth.
+
+\paragraph{Differences in bill
+morphology}\label{differences-in-bill-morphology}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ANOVA to test for differences in bill morphology between penguin species}
+\NormalTok{anova\_morphology }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(bill\_morphology }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species, }\AttributeTok{data =}\NormalTok{ analysis\_data)}
+\FunctionTok{summary}\NormalTok{(anova\_morphology)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Df Sum Sq Mean Sq F value Pr(>F)    
+## species       2  73.17   36.59    1452 <2e-16 ***
+## Residuals   330   8.32    0.03                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Tukey{-}Kramer test for pairwise comparisons of bill morphology between penguin species}
+\NormalTok{tukey\_results\_morphology }\OtherTok{\textless{}{-}} \FunctionTok{TukeyHSD}\NormalTok{(}\FunctionTok{aov}\NormalTok{(bill\_morphology }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species, }\AttributeTok{data =}\NormalTok{ analysis\_data))}
+\FunctionTok{print}\NormalTok{(tukey\_results\_morphology)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = bill_morphology ~ species, data = analysis_data)
+## 
+## $species
+##                       diff       lwr       upr p adj
+## Chinstrap-Adelie 0.5322773 0.4774023 0.5871523     0
+## Gentoo-Adelie    1.0551237 1.0089631 1.1012844     0
+## Gentoo-Chinstrap 0.5228464 0.4660277 0.5796651     0
+\end{verbatim}
+
+\paragraph{Differences in bill length}\label{differences-in-bill-length}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ANOVA to test for differences in bill length between penguin species}
+\NormalTok{anova\_length }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(bill\_length\_mm }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species, }\AttributeTok{data =}\NormalTok{ analysis\_data)}
+\FunctionTok{summary}\NormalTok{(anova\_length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Df Sum Sq Mean Sq F value Pr(>F)    
+## species       2   7015    3508   397.3 <2e-16 ***
+## Residuals   330   2914       9                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Tukey{-}Kramer test for pairwise comparisons of bill length between penguin species}
+\NormalTok{tukey\_results\_length }\OtherTok{\textless{}{-}} \FunctionTok{TukeyHSD}\NormalTok{(}\FunctionTok{aov}\NormalTok{(bill\_length\_mm }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species, }\AttributeTok{data =}\NormalTok{ analysis\_data))}
+\FunctionTok{print}\NormalTok{(tukey\_results\_length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = bill_length_mm ~ species, data = analysis_data)
+## 
+## $species
+##                       diff       lwr        upr     p adj
+## Chinstrap-Adelie 10.009851  8.982789 11.0369128 0.0000000
+## Gentoo-Adelie     8.744095  7.880135  9.6080546 0.0000000
+## Gentoo-Chinstrap -1.265756 -2.329197 -0.2023151 0.0148212
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pipe to calculate 95\% confidence intervals for bill length}
+\NormalTok{CIs\_bill\_length }\OtherTok{\textless{}{-}}\NormalTok{ analysis\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(species) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{mean\_length =} \FunctionTok{mean}\NormalTok{(bill\_length\_mm, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{se\_length =} \FunctionTok{sd}\NormalTok{(bill\_length\_mm, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{n}\NormalTok{()),}
+    \AttributeTok{lower\_length\_ci =}\NormalTok{ mean\_length }\SpecialCharTok{{-}} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ se\_length,}
+    \AttributeTok{upper\_length\_ci =}\NormalTok{ mean\_length }\SpecialCharTok{+} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ se\_length}
+\NormalTok{  )}
+
+\FunctionTok{print}\NormalTok{(CIs\_bill\_length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 5
+##   species   mean_length se_length lower_length_ci upper_length_ci
+##   <fct>           <dbl>     <dbl>           <dbl>           <dbl>
+## 1 Adelie           38.8     0.220            38.4            39.3
+## 2 Chinstrap        48.8     0.405            48.0            49.6
+## 3 Gentoo           47.6     0.285            47.0            48.1
+\end{verbatim}
+
+\paragraph{Differences in bill depth}\label{differences-in-bill-depth}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ANOVA to test for differences in bill depth between penguin species}
+\NormalTok{anova\_depth }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(bill\_depth\_mm }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species, }\AttributeTok{data =}\NormalTok{ analysis\_data)}
+\FunctionTok{summary}\NormalTok{(anova\_depth)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Df Sum Sq Mean Sq F value Pr(>F)    
+## species       2  870.8   435.4   344.8 <2e-16 ***
+## Residuals   330  416.7     1.3                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Tukey{-}Kramer test for pairwise comparisons of bill depth between penguin species}
+\NormalTok{tukey\_results\_depth }\OtherTok{\textless{}{-}} \FunctionTok{TukeyHSD}\NormalTok{(}\FunctionTok{aov}\NormalTok{(bill\_depth\_mm }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species, }\AttributeTok{data =}\NormalTok{ analysis\_data))}
+\FunctionTok{print}\NormalTok{(tukey\_results\_depth)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = bill_depth_mm ~ species, data = analysis_data)
+## 
+## $species
+##                         diff       lwr        upr     p adj
+## Chinstrap-Adelie  0.07332796 -0.315078  0.4617339 0.8968734
+## Gentoo-Adelie    -3.35062162 -3.677347 -3.0238962 0.0000000
+## Gentoo-Chinstrap -3.42394958 -3.826113 -3.0217860 0.0000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pipe to calculate confidence intervals for bill depth}
+\NormalTok{CIs\_bill\_depth }\OtherTok{\textless{}{-}}\NormalTok{ analysis\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(species) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{mean\_depth =} \FunctionTok{mean}\NormalTok{(bill\_depth\_mm, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{se\_depth =} \FunctionTok{sd}\NormalTok{(bill\_depth\_mm, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{n}\NormalTok{()),}
+    \AttributeTok{lower\_depth\_ci =}\NormalTok{ mean\_depth }\SpecialCharTok{{-}} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ se\_depth,}
+    \AttributeTok{upper\_depth\_ci =}\NormalTok{ mean\_depth }\SpecialCharTok{+} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ se\_depth}
+\NormalTok{  )}
+
+\FunctionTok{print}\NormalTok{(CIs\_bill\_depth)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 5
+##   species   mean_depth se_depth lower_depth_ci upper_depth_ci
+##   <fct>          <dbl>    <dbl>          <dbl>          <dbl>
+## 1 Adelie          18.3   0.101            18.1           18.5
+## 2 Chinstrap       18.4   0.138            18.2           18.7
+## 3 Gentoo          15.0   0.0904           14.8           15.2
+\end{verbatim}
+
+\#\#Results
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"plotting.R"}\NormalTok{))}
+\NormalTok{results\_figure\_1 }\OtherTok{\textless{}{-}} \FunctionTok{results\_plot\_1}\NormalTok{(analysis\_data)}
+
+\CommentTok{\#Save plot }
+\CommentTok{\#gsave("exploratory\_figure.png", }
+       \CommentTok{\#plot = exploratory\_figure, }
+       \CommentTok{\#width = 8, height = 6, units = "in", dpi = 300)}
+       
+\NormalTok{results\_figure\_2 }\OtherTok{\textless{}{-}} \FunctionTok{results\_plot\_2}\NormalTok{(analysis\_data)}
+
+\CommentTok{\#Save plot }
+\CommentTok{\#gsave("exploratory\_figure.png", }
+       \CommentTok{\#plot = exploratory\_figure, }
+       \CommentTok{\#width = 8, height = 6, units = "in", dpi = 300)}
+
+\CommentTok{\#Make a multi{-}panel figure}
+\FunctionTok{grid.arrange}\NormalTok{(results\_figure\_1,  results\_figure\_2,  }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+
+\FunctionTok{grid.text}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\AttributeTok{x =} \FloatTok{0.07}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.95}\NormalTok{, }\AttributeTok{gp =} \FunctionTok{gpar}\NormalTok{(}\AttributeTok{fontsize =} \DecValTok{12}\NormalTok{)) }\CommentTok{\#Adds label \textquotesingle{}A\textquotesingle{} to first graph}
+\FunctionTok{grid.text}\NormalTok{(}\StringTok{"B"}\NormalTok{, }\AttributeTok{x =} \FloatTok{0.57}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.95}\NormalTok{, }\AttributeTok{gp =} \FunctionTok{gpar}\NormalTok{(}\AttributeTok{fontsize =} \DecValTok{12}\NormalTok{)) }\CommentTok{\#Adds label \textquotesingle{}B\textquotesingle{} to second graph}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{PenguinAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf}
+\emph{Figure 3. A plot \ldots{} }
+
+\subsubsection{Conclusion}\label{conclusion}
+
+Beak Shape Ratio: The ratio of culmen length to depth significantly
+differs across species. Gentoo penguins have the largest ratio, followed
+by Chinstrap penguins, and Adelie penguins have the smallest ratio.
+
+Interpretation of Shape: Since the ratio is a measure of beak shape,
+this suggests that Gentoo penguins have relatively longer, shallower
+beaks, while Adelie penguins have shorter, deeper beaks.
+
+Beak Length: Chinstrap and Gentoo penguins both have significantly
+longer beaks than Adelie penguins. Gentoo penguins have slightly shorter
+beaks than Chinstrap penguins, though this difference is still
+statistically significant. Beak Depth: Gentoo penguins have
+significantly deeper beaks compared to both Adelie and Chinstrap
+penguins. There is no significant difference in beak depth between
+Chinstrap and Adelie penguins. Are the results informative? Yes, these
+results are informative because:
+
+They show clear patterns of differences in beak morphology (both length
+and depth) across species. The TukeyHSD results reveal specific
+comparisons, quantifying the size and direction of differences between
+species.
+
+These findigns align well with feeding habits.
+
+As the cliamte changes, wih rapidly decling extent and duration of sea
+ice in Antartica, with correlated reductions in Antarctic krill6
+(Euphausia superba), the main prey item for most meso- and top-predators
+in the Antarctic ecosystem will decrease. A recent article suggetsed
+that gentoo, which have the most diverse diets, will be able to adpat
+whilst chinsatrp and adelie, have been showing recent declines in. As
+such, nless these penguisna re able to adapt, they will perish (Clucas
+et al., 2014). Signficantylm I argue that bill mropholgoy mught be amn
+impritnat determinant of diet, as it will speciesl;ay how they hunt and
+how ffectively they ctahc prey. of course mophological liamitaions and
+gentics will limit how quicly these can adapt and diactet whetehr tbe
+penguisna re able to survive at all.
+
+\subsubsection{References}\label{references}
+
+\ldots{}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{QUESTION 3: Open Science}\label{question-3-open-science}
+
+\subsubsection{a) GitHub}\label{a-github}
+
+\emph{Upload your RProject you created for \textbf{Question 2} and any
+files and subfolders used to GitHub. Do not include any identifiers such
+as your name. Make sure your GitHub repo is public.}
+
+\emph{GitHub link:}
+
+\emph{You will be marked on your repo organisation and readability.}
+
+\subsubsection{b) Share your repo with a partner, download, and try to
+run their data
+pipeline.}\label{b-share-your-repo-with-a-partner-download-and-try-to-run-their-data-pipeline.}
+
+\emph{Partner's GitHub link:}
+
+\emph{You \textbf{must} provide this so I can verify there is no
+plagiarism between you and your partner.}
+
+\subsubsection{c) Reflect on your experience running their code.
+(300-500
+words)}\label{c-reflect-on-your-experience-running-their-code.-300-500-words}
+
+\begin{itemize}
+\item
+  \emph{What elements of your partner's code helped you to understand
+  their data pipeline?}
+\item
+  \emph{Did it run? Did you need to fix anything?}
+\item
+  \emph{What suggestions would you make for improving their code to make
+  it more understandable or reproducible, and why?}
+\item
+  \emph{If you needed to alter your partner's figure using their code,
+  do you think that would be easy or difficult, and why?}
+\end{itemize}
+
+\subsubsection{d) Reflect on your own code based on your experience with
+your partner's code and their review of yours. (300-500
+words)}\label{d-reflect-on-your-own-code-based-on-your-experience-with-your-partners-code-and-their-review-of-yours.-300-500-words}
+
+\begin{itemize}
+\item
+  \emph{What improvements did they suggest, and do you agree?}
+\item
+  \emph{What did you learn about writing code for other people?}
+\end{itemize}
+
+\end{document}
