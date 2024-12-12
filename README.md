@@ -1,14 +1,10 @@
-# ReproducibleScienceAssignment
-A short description of your project goes here...
-
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
+# Reproducible Science Assignment
+This project ...
 
 ## Installation
 1. Clone the repository:
 ```bash
- git clone https://github.com/yourusername/yourproject.git
+ git clone [https://github.com/Biology3579/ReproducibleScienceAssignment.git]
 ```
 2. Install dependencies:
 ```bash
