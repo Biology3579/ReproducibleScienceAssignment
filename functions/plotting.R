@@ -1,7 +1,7 @@
 ## Script name: plotting.R
 ##
 ## Purpose of script: 
-##    A collection of functions for plotting figures for the Pygoscelis penguins bill
+##    A collection of functions for plotting and saving figures for the Pygoscelis penguins bill
 ##    morphology analysis
 ##
 ## Author: Biology3579
@@ -14,6 +14,9 @@
 library(ggplot2)
 library(dplyr)
 library(ggsignif)
+library()
+
+# Plotting Figures Functions ----
 
 # Defining custom color palettes and custom shapes for each species of penguin ----
 bad_custom_colours <- c(
@@ -130,7 +133,8 @@ results_plot_1 <- function(data) {
                 (color = species),    # Species-specific colour
                 alpha = 0.3,          # Transparency of the points
                 show.legend = FALSE,  # No legend for the points
-                position = position_jitter(width = 0.2, seed = 0)) +  # Add jitter with width
+                position = position_jitter(width = 0.2, # Specify jitter with width
+                                           seed = 0)) + # Ensures reproducible in random variation in point placement 
     
     # Add significance levels
     geom_signif(comparisons = list(c("Adelie", "Chinstrap"), 
@@ -178,7 +182,8 @@ results_plot_2 <- function(data) {
       color = species),    # Species-specific colour
       alpha = 0.3,          # Transparency of the points
       show.legend = FALSE,  # No legend for the points
-      position = position_jitter(width = 0.2, seed = 0)) +  # Add jitter with width
+      position = position_jitter(width = 0.2, # Specify jitter width
+                                 seed = 0)) + # Ensures reproducible in random variation in point placement 
     
     # Add significance levels
     geom_signif(comparisons = list(c("Adelie", "Chinstrap"), 
@@ -224,7 +229,8 @@ results_plot_3 <- function(data) {
       color = species),    # Species-specific colour
       alpha = 0.3,          # Transparency of the points
       show.legend = FALSE,  # No legend for the points
-      position = position_jitter(width = 0.2, seed = 0)) +  # Add jitter with width
+      position = position_jitter(width = 0.2, # Specify jitter width
+                                 seed = 0)) + # Ensures reproducible in random variation in point placement
     
     # Add significance levels
     geom_signif(comparisons = list(c("Adelie", "Chinstrap"), 
@@ -233,7 +239,7 @@ results_plot_3 <- function(data) {
                 annotations = c("ns", "***", "***"),  # Adding the significance stars
                 test = "t.test",  # Change to t-test for pairwise comparisons
                 y_position = c(22, 21, 24),    # Position of significance stars
-                tip_length = 0.01) +            # Short tip lines for neatness
+                tip_length = 0.01) +          # Short tip lines for neatness
     
     # Apply custom colours
     scale_color_manual(values = custom_colours) +
@@ -250,4 +256,24 @@ results_plot_3 <- function(data) {
       plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
       legend.position = "none")
 }
+
+# Saving Figures Function ----
+
+# Fucntion to save figures as svg (vector) files
+save_plot_svg <- function(data, 
+                                  filename, # Filename (and path: folder/name)
+                                  size, 
+                                  scaling, 
+                                  plot_function){
+  
+  size_inches = size / 2.54  # Convert size from cm to inches
+  svglite(filename, width = size_inches, height = size_inches, scaling = scaling)
+  
+  # Plot the respective figure based on the passed plot_function
+  plot <- plot_function(data)  # Call the appropriate plot function (e.g., results_plot_1, results_plot_2, etc.)
+  print(plot)  # Print the plot to save it
+  
+  dev.off()  # Close the device (save the plot)
+}
+
 
