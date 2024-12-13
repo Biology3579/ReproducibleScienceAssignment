@@ -2,7 +2,7 @@
 ##
 ## Purpose of script: 
 ##    A collection of functions for cleaning and curating the Palmer Penguins 
-##    raw_dataset for analysis.
+##    raw_dataset for analysis, to declutter main analysis file.
 ##
 ## Author: Biology3579
 ##

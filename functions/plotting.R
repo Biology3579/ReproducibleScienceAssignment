@@ -2,7 +2,7 @@
 ##
 ## Purpose of script: 
 ##    A collection of functions for plotting and saving figures for the Pygoscelis penguins bill
-##    morphology analysis
+##    morphology analysis, to declutter main analysis file.
 ##
 ## Author: Biology3579
 ##
