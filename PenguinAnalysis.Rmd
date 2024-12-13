@@ -3,9 +3,9 @@ title: "PenguinsAnalysis"
 author: "Biology3579"
 date: "2024-12-06"
 output:
+  html_document: default
   pdf_document: 
     latex_engine: xelatex
-  html_document: default
 geometry: left = 0.5cm, right = 1cm, top = 1cm, bottom = 2cm
 mainfont: Arial
 ---
@@ -20,9 +20,9 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The genus Pygoscelis, which includes Adélie (*Pygoscelis adeliae*), Chinstrap (*Pygoscelis antarcticus*), and Gentoo (*Pygoscelis papua*) penguins, occupies overlapping ranges across the Western Antarctic Peninsula []. Despite this sympatric distribution, these species exhibit distinct feeding ecologies, ranging from specialist to generalist strategies, allowing them to occupy different ecological niches and minimising competition []. Diet composition analysis of Chinstrap penguins shows a high degree of specialization, with their diet consisting almost exclusively of the krill species *Euphausia superba* []. In contrast, while Adélie penguins also rely heavily on krill, their diet is more varied, consisting of both *E. superba* and *E. crystallorophias* krill species, along with notothenioid fish. Dietary analyses of Gentoo penguins reveal that this species has the most varied feeding habits, with a generalist diet consisting of a broad range of crustaceans and fish []. Notably, krill constitutes a smaller portion of their diet compared to other *Pygoscelis* species, highlighting a distinct difference in the feeding ecology of this species.
+The genus Pygoscelis, which includes Adélie (*Pygoscelis adeliae*), Chinstrap (*Pygoscelis antarcticus*), and Gentoo (*Pygoscelis papua*) penguins, occupies overlapping ranges across the Western Antarctic Peninsula. Despite this sympatric distribution, these species exhibit distinct feeding ecologies, ranging from specialist to generalist strategies, allowing them to occupy different ecological niches and minimising competition<sup>[1]</sup>. Diet composition analysis of Chinstrap penguins shows a high degree of specialization, with their diet consisting almost exclusively of the krill species *Euphausia superba*<sup>[2]</sup>. In contrast, while Adélie penguins also rely heavily on krill, their diet is more varied, consisting of both *E. superba* and *E. crystallorophias* krill species, along with notothenioid fish<sup>[3]</sup>. Dietary analyses of Gentoo penguins reveal that this species has the most varied feeding habits, with a generalist diet consisting of a broad range of crustaceans and fish<sup>[1]</sup>. Notably, krill constitutes a smaller portion of their diet compared to other *Pygoscelis* species, highlighting a distinct difference in the feeding ecology of this species.
 
-The bill morphology of penguins is a critical aspect of their feeding ecology, as it directly influences their ability to capture and consume different prey types. A study by Chávez-Hoffmeister (2020) found that penguin species display distinct bill shapes that are closely tied to their specific feeding strategies []. For example, krill-eating penguins tend to have wider beaks and broader jaws, which help them efficiently filter and capture krill. In contrast, fish-eating species possess narrower, more robust beaks designed to exert greater bite force, allowing them to grasp and hold onto slippery fish more effectively []. These morphological adaptations are essential for the species' feeding behavior, enabling them to exploit their preferred prey types. As such, each penguin species requires bill morphology that is finely tuned to its ecological niche, ensuring efficient foraging and survival in their specific environments.
+The bill morphology of penguins is a critical aspect of their feeding ecology, as it directly influences their ability to capture and consume different prey types. A study by Chávez-Hoffmeister (2020) found that penguin species display distinct bill shapes that are closely tied to their specific feeding strategies<sup>[4]</sup>. For example, krill-eating penguins tend to have wider beaks and broader jaws, which help them efficiently filter and capture krill. In contrast, fish-eating species possess narrower, more robust beaks designed to exert greater bite force, allowing them to grasp and hold onto slippery fish more effectively<sup>[4]</sup>. These morphological adaptations are essential for the species' feeding behavior, enabling them to exploit their preferred prey types. As such, each penguin species requires bill morphology that is finely tuned to its ecological niche, ensuring efficient foraging and survival in their specific environments.
 
 ## Hypotheses
 
@@ -32,9 +32,9 @@ Based on the importance of bill morphology in feeding behaviors and the differen
 
 ### Data
 
-To investigate the differences in bill morphology across penguin species, I will be utilizing the palmerpenguins dataset, which is derived from a study conducted by Gorman et al. (2014) on Pygoscelis penguins in the Palmer Archipelago, located west of the Antarctic Peninsula, near Anvers Island. The data were collected from 2007 to 2009 across three islands: Biscoe (64° 48.9'S, 63° 46.9'W), Torgersen (64° 46.9'S, 64° 04.9'W), and Dream (64° 43.9'S, 64° 13.9'W). This dataset includes multiple measurements taken on three species of Pygoscelis penguins - Adélie, Chinstrap, and Gentoo - observed on these three islands, including body measurements (culmen length, culmen depth, flipper length, and body mass), sex information, nesting details (including clutch completion and egg laying dates), and stable isotope data (Δ15N and Δ13C) for 344 individual penguins across three species.
+To investigate the differences in bill morphology across penguin species, I will be utilizing the palmerpenguins dataset, which is derived from a study conducted by Gorman et al. (2014) on Pygoscelis penguins in the Palmer Archipelago, located west of the Antarctic Peninsula, near Anvers Island<sup>[5]</sup>. The data were collected from 2007 to 2009 across three islands: Biscoe (64° 48.9'S, 63° 46.9'W), Torgersen (64° 46.9'S, 64° 04.9'W), and Dream (64° 43.9'S, 64° 13.9'W). This dataset includes multiple measurements taken on three species of Pygoscelis penguins - Adélie, Chinstrap, and Gentoo - observed on these three islands, including body measurements (culmen length, culmen depth, flipper length, and body mass), sex information, nesting details (including clutch completion and egg laying dates), and stable isotope data (Δ15N and Δ13C) for 344 individual penguins across three species.
 
-### Statistical analysis
+### Statistical analyses
 
 To investigate differences in bill morphology across Adélie, Chinstrap, and Gentoo penguins, I analyzed two key measurements: bill length and bill depth (which I also refer to as width). These metrics were used to assess morphological adaptations related to feeding ecology.
 
@@ -50,25 +50,20 @@ Additionally, I calculated the 95% confidence intervals for the differences in m
 
 ## Analysis
 
+**Important note:**
+*Comprehensive instructions, including all prerequisites and detailed guidelines for running this analysis and relevant code, are available in the README file of my [GitHub repository](https://github.com/Biology3579/ReproducibleScienceAssignment.git) for this project. Please refer to the README to ensure proper setup and usage.*
+
+
 ```{r renv-restore}
+# Restoring project's environment 
 renv::restore()
 ```
 
-```{r packages}
-# load the required packages
-library(here)        # for specifying the directory
-library(tinytex)     # for LaTeX-related tasks
-library(renv)        # for environment management
-library(palmerpenguins)  # for dataset
-library(janitor)     # for cleaning data
-library(tidyverse)   # for data manipulation and visualization
-library(dplyr)       # for data manipulation
-library(ggplot2)     # for data visualization
-library(lme4)        # for linear models
-library(rstatix)     # for pair-wise t-tests
-library(grid)        # for graphical layout
-library(gridExtra)   # for graphical layout
-library(ggsignif)    # for adding significance annotations to ggplot2 plots
+```{r packages, warning=FALSE}
+# Source library loading fucntion
+source(here::here("functions", "libraries.R"))
+# Load necessary libraries
+load_libraries()
 ```
 
 ```{r load-&-save-data}
@@ -87,6 +82,7 @@ write_csv(penguins_clean, here("data", "penguins_clean.csv"))
 ```{r curate-&-save-data}
 #Curate the clean data and save it separately
 source(here("functions", "cleaning_and_curating.R"))
+#The curating_penguins_clean () funciton ...
 analysis_data <- curating_penguins_clean(penguins_clean)
 write_csv(analysis_data, here("data", "analysis_data.csv"))
 ```
@@ -95,22 +91,30 @@ write_csv(analysis_data, here("data", "analysis_data.csv"))
 
 **QUESTION 1: Bad Figure**
 
-
-```{r bad-figure-plot, fig.align = "center", echo=FALSE}
+```{r bad-figure-plot-and-save, fig.align = "center", echo=FALSE}
+# Specify location of functions 
 source(here("functions", "plotting.R"))
-bad_figure <- plot_bad_figure(analysis_data)
-print(bad_figure)
-```
-```{r save-bad-figure, echo=FALSE}
-#Save plot 
-#gsave("exploratory_figure.png", 
-       #plot = exploratory_figure, 
-       #width = 8, height = 6, units = "in", dpi = 300) 
+# Apply plot function
+  bad_figure <- plot_bad_figure(analysis_data)
+
+# Suppress the null device output
+invisible(capture.output(
+# Apply save function
+  save_plot_svg(
+    analysis_data, 
+    "figures/bad_figure.svg", 
+    size = 15, 
+    scaling = 1, 
+    plot_function = plot_bad_figure
+  )
+))
+
+bad_figure # Show the plot
 ```
 
 _Figure 1: Bar chart of mean bill length vs. mean bill depth for three species of *Pygoscelis* penguins._
 
-b)  Write about how your design choices mislead the reader about the underlying data (200-300 words).
+**Reflection about bad figure**
 
 The figure displaying mean bill length and depth for Adélie, Chinstrap, and Gentoo penguins suffers from several design flaws that mislead the reader about the underlying data. The use of a bar chart to represent relationships between two continuous variables is inappropriate, as bar charts are better suited for categorical data and oversimplify the relationship being analyzed. A scatter plot would more effectively illustrate variation and trends between continuous measurements. Furthermore, the figure presents only summary statistics (mean values) without raw data points or indications of data distribution, preventing readers from assessing variability, outliers, or patterns within each species, which are critical for understanding the true complexity of the data.
 
@@ -118,25 +122,30 @@ Additionally, the figure lacks error bars or representations of variability, suc
 
 Furthermore, some of the stylistic choices made for the graph make it harder to interpret the data. Firstly, the choice of similar colors for the three species which makes it difficult to differentiate between species at a glance; more contrasting colors or distinct patterns would improve clarity. In addition, the axis labels are vague - not indicating what exactly is being measured for length and depth - and fail to convey the units of measurement, detracting from the figure’s interpretability.
 
-Importance of science communication ...
+Concerns about scientific reproducibility are increasingly prevalent<sup>[6]</sup>. Well-designed figures ensure that data is represented transparently, enabling others to interpret findings accurately and validate results. Poorly constructed visuals, on the other hand, can obscure key patterns or relationships, undermining the credibility of the research and impeding reproducibility.
 
 **QUESTION 2: Data Pipeline**
 
-```{r  exploratory-figure-plot, fig.align = "center"}
-
+```{r  exploratory-figure-plot-and-save, fig.align = "center"}
+# Specify location of functions 
 source(here("functions", "plotting.R"))
+# Apply plot function
 exploratory_figure <- plot_exploratory_figure(analysis_data)
+
+# Suppress the null device output
+invisible(capture.output(
+# Apply save function
+save_plot_svg(analysis_data, 
+                      "figures/exploratory_figure.svg", 
+                      size = 15, 
+                      scaling = 1, 
+                      plot_function = plot_exploratory_figure)
+))
 exploratory_figure # Show the plot
-```
-```{r save-exploratory-figure, echo=FALSE}
-#Save plot 
-#gsave("exploratory_figure.png", 
-       #plot = exploratory_figure, 
-       #width = 8, height = 6, units = "in", dpi = 300) 
 ```
 _Figure 2: Scatterplot showing the distribution of bill lengths and bill depths for three species of *Pygoscelis* penguins, with variability shown in bill length and depth across Adélie, Chinstrap, and Gentoo penguins._
 
-Figure 2 provides an exploratory visualization of the distribution of bill length and bill depth among three species of *Pygoscelis* penguins, revealing distinct patterns in their morphospace. Adélie penguins tend to have relatively shorter but wider bills (greater bill depth), while Gentoo penguins exhibit longer and narrower bills. Chinstrap penguins occupy an intermediate space, showing bill depths similar to Adélie penguins but lengths closer to those of Gentoo penguins. This clear separation suggests potential species-specific differences in bill morphology.
+Figure 2 provides an exploratory visualisation of the distribution of bill length and bill depth among three species of *Pygoscelis* penguins, revealing distinct patterns in their morphospace. Adélie penguins tend to have relatively shorter but wider bills (greater bill depth), while Gentoo penguins exhibit longer and narrower bills. Chinstrap penguins occupy an intermediate space, showing bill depths similar to Adélie penguins but lengths closer to those of Gentoo penguins. This clear separation suggests potential species-specific differences in bill morphology.
 
 However, it is important to note that this figure is purely exploratory. While it highlights potential patterns, no definitive conclusions about interspecies differences can be drawn without conducting appropriate statistical tests to assess the significance of these observations.
 
@@ -191,17 +200,22 @@ bill_depth_t_tests
 
 ### All three studied penguin species show significant differences in length/depth ratios 
 
-```{r plot-figure-3, fig.align='center'}
+```{r plot-and-save-figure-3, fig.align='center'}
+# Specify location of functions 
 source(here("functions", "plotting.R"))
-figure_3 <- results_plot_1(analysis_data)
+# Apply plot function
+bill_morphology_boxplot <- results_plot_1(analysis_data)
 
-figure_3
-```
-```{r save-figure-3, echo=FALSE}
-#Save plot 
-#gsave("exploratory_figure.png", 
-       #plot = exploratory_figure, 
-       #width = 8, height = 6, units = "in", dpi = 300)
+# Suppress the null device output
+invisible(capture.output(
+# Apply save function
+save_plot_svg(analysis_data, 
+                      "figures/bill_morphology_boxplot.svg", 
+                      size = 15, 
+                      scaling = 1, 
+                      plot_function = results_plot_1)
+))
+bill_morphology_boxplot # Show the plot
 ```
 _Figure 3: Boxplot showing differences in bill morphology among Adélie, Chinstrap and Gentoo penguins. Statistical significance is indicated by asterisks (*** p < 0.001), showing highly significant differences between all species pairs._
 
@@ -211,23 +225,29 @@ By analysis the specific bill length/depth ratios displayed in Figure 3, we can 
 
 ### There is variability in bill length and depth across the three penguin species, with some overlap in their morphologies
 
-```{r plot-figure-4}
+```{r plot-figure-4, fig.align='center'}
+# Specify location of functions 
 source(here("functions", "plotting.R"))
-figure_4a <- results_plot_2(analysis_data)
-figure_4b <- results_plot_3(analysis_data)
 
-#Make a multi-panel figure
-# Adjust heights to allocate more space to each plot
-grid.arrange(figure_4a, figure_4b, ncol = 2)
+# Apply plot functions
+bill_length_boxplot <- results_plot_2(analysis_data)
+bill_depth_boxplot <- results_plot_3(analysis_data)
 
-grid.text("A", x = 0.055, y = 0.95, gp = gpar(fontsize = 12)) #Adds label 'A' to first graph
-grid.text("B", x = 0.57, y = 0.95, gp = gpar(fontsize = 12)) #Adds label 'B' to second graph
+# Create the multi-panel figure and display it 
+grid.arrange(bill_length_boxplot, bill_depth_boxplot, ncol = 2)
+
+# Add labels to the panels
+grid.text("A", x = 0.055, y = 0.95, gp = gpar(fontsize = 12))  # Adds label 'A' to the first graph
+grid.text("B", x = 0.57, y = 0.95, gp = gpar(fontsize = 12))  # Adds label 'B' to the second graph
+
 ```
-```{r save-figure-4, echo=FALSE}
-#Save plot 
-#gsave("exploratory_figure.png", 
-       #plot = exploratory_figure, 
-       #width = 8, height = 6, units = "in", dpi = 300)
+```{r save-multi-figure-plot, include=FALSE}
+#Save the plot separately to avoid unwanted outputs
+save_plot_svg(data = analysis_data, 
+              filename = "figures/length_and_depth_multifigure.svg",  # Specify the path and filename for saving
+              size = 15, 
+              scaling = 1, 
+              plot_function = function(data) grid.arrange(bill_length_boxplot,                                                                         bill_length_boxplot, ncol = 2))
 ```
 
 _Figure 4: Boxplots showing differences in bill length (Figure 4a) and bill depth (Figure 4b) among Adélie, Chinstrap and Gentoo penguins. Statistical significance is indicated by asterisks (*** p < 0.001, ** p < 0.01, * p < 0.05, ns p > 0.05). Figure 4a shows differences in bill length across the three species. Figure 4b shows differences in bill depth across the three species._
@@ -243,26 +263,43 @@ The results of this study reveal notable differences in bill morphology across t
 
 However, while the differences in bill morphology across the species are significant, the study does not provide direct evidence linking these morphological traits to dietary preferences. There may be other ecological factors at play, such as environmental influences and behavioural differences not associated to feeding (e.g social behaviours) which could also shape bill morphology. Moreover, it is important to note that while the bill length-to-depth ratio has provided useful insights into bill morphology, it has limitations as a sole measure of feeding strategy. The relationship between bill morphology and feeding behavior is complex, and factors such as bill shape, size, and curvature could all play a role in how penguins capture and consume different prey types. Therefore, further research is needed to explore how these morphological traits interact with ecological factors and how penguin species might adapt to changing environmental conditions.
 
-In conclusion, this study provides valuable insights into how bill morphology varies between three species of *Pygoscelis* penguins and provides promising insights into how these morphologies might reflect the different feeding strategies between these, but it also highlights the need for more comprehensive studies that take into account other ecological variables and the broader environmental context. Understanding these relationships is especially critical in the face of climate change, which is likely to affect the availability of prey species such as krill (Clucas et al., 2014), and could enforce strong selection for shifting the dynamics between specialized and generalist feeders in penguin populations .
+In conclusion, this study provides valuable insights into how bill morphology varies between three species of *Pygoscelis* penguins and provides promising insights into how these morphologies might reflect the different feeding strategies between these, but it also highlights the need for more comprehensive studies that take into account other ecological variables and the broader environmental context. Understanding these relationships is especially critical in the face of climate change, which is likely to affect the availability of prey species such as krill<sup>[7]</sup>, and could enforce strong selection for shifting the dynamics between specialized and generalist feeders in penguin populations .
 
 ## References
 
-...
+- <sup>[1]</sup> Polito, M., Trivelpiece, W., Patterson, W., Karnovsky, N., Reiss, C. and Emslie, S. (2015). Contrasting specialist and generalist patterns facilitate foraging niche partitioning in sympatric populations of Pygoscelis penguins. Marine Ecology Progress Series, 519, pp.221–237. doi:https://doi.org/10.3354/meps11095.
+
+- <sup>[2]</sup> RatcliffeN. and Trathan, P. (2011). Introduction A REVIEW OF THE DIET AND AT-SEA DISTRIBUTION OF PENGUINS BREEDING WITHIN THE CAMLR CONVENTION AREA. CCAMLR Science, [online] 18, pp.75–114. Available at: https://www.ccamlr.org/en/system/files/science_journal_papers/Ratcliffe-Trathan_0.pdf [Accessed 11 Dec. 2024].
+
+- <sup>[3]</sup> Tabassum, N., Lee, J.-H., Lee, S.-R., Kim, J.-U., Park, H., Kim, H.-W. and Kim, J.-H. (2022). Molecular Diet Analysis of Adélie Penguins (Pygoscelis adeliae) in the Ross Sea Using Fecal DNA. Biology, 11(2), p.182. doi:https://doi.org/10.3390/biology11020182.
+
+- <sup>[4]</sup> Chávez-Hoffmeister, M. (2020). Bill disparity and feeding strategies among fossil and modern penguins. Paleobiology, [online] 46(2), pp.176–192. doi:https://doi.org/10.1017/pab.2020.10.
+
+- <sup>[5]</sup> Gorman, K.B., Williams, T.D. and Fraser, W.R. (2014). Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE, 9(3), p.e90081. doi:https://doi.org/10.1371/journal.pone.0090081.
+
+- <sup>[6]</sup> Open Science Collaboration (2015). Estimating the reproducibility of psychological science. Science, [online] 349(6251). doi:https://doi.org/10.1126/science.aac4716.
+
+- <sup>[7]</sup> Clucas, G.V., Dunn, M.J., Dyke, G., Emslie, S.D., Levy, H., Naveen, R., Polito, M.J., Pybus, O.G., Rogers, A.D. and Hart, T. (2014). A reversal of fortunes: climate change ‘winners’ and ‘losers’ in Antarctic Peninsula penguins. Scientific Reports, 4(1). doi:https://doi.org/10.1038/srep05024.
 
 ------------------------------------------------------------------------
 
-** QUESTION 3: Open Science** 
+## ** QUESTION 3: Open Science** 
 
-**a) My GitHub link:**
+**My GitHub link:**
 <https://github.com/Biology3579/ReproducibleScienceAssignment.git>
 
+_Note: for this section we worked in a three way system. I analysed Anonymous94394's code, whilst bleeddmagic's analysed my code._
 
-**b) Partner's GitHub link:**
+Here are their respective repositories: 
+
+** Anonymous94394's GitHub link:**
 <https://github.com/Anonymous94394/PalmerPenguins.git>
 
+** bleeddmagic's GitHub link:**
+<https://github.com/bleeddmagic/PenguinsProject>
 
-### c) Reflect on your experience running their code. (300-500 words)
 
+### Reflection after running Anonymous94394's
 
 When I ran my partner's code, I found it to be well-organized and accessible, which greatly enhanced my understanding of the data pipeline. The code was structured into clearly defined sections with informative headings, making navigation intuitive. Each section was accompanied by comments explaining its purpose, which helped me follow the workflow and understand how the parts fit together. This thoughtful structure and clarity made the code easy to follow, even for someone unfamiliar with the dataset.
 A standout feature was the use of functions to break down complex tasks, which decluttered the main script and improved readability. This modular approach streamlined the process and allowed for easy reuse of code. I appreciated that the functions were called at the start, making their role within the script immediately clear. This separation of concerns not only enhanced organization but also made debugging and testing individual components straightforward.
@@ -273,9 +310,27 @@ The code executed without major issues, and I did not need to fix anything, thou
 
 Overall, the code was well-prepared and reproducible, with only minor improvements needed to make it even more user-friendly and accessible to a broader audience.
 
+### Reflecting on my own code
 
-### d) Reflect on your own code based on your experience with your partner's code and their review of yours. (300-500 words)
+*What improvements did they suggest, and do you agree?*
 
--   *What improvements did they suggest, and do you agree?*
+Based on my partner's feedback, one key suggestion was to place the methods and conclusions closer to the relevant code. I agree with this, as restructuring the code to include explanations directly beneath the relevant sections would improve readability. This would reduce the need to refer back to separate sections, making it easier for others to follow the analysis without constantly jumping between different parts of the code. Regarding the use of renv::init(), I made sure that I uploaded the updated renv.lock and properly specified its usage in the script, ensuring that the environment would be correctly initialized when other users run the code. This way, the necessary package versions and dependencies are accurately installed, and the environment remains consistent. 
 
--   *What did you learn about writing code for other people?*
+Another key suggestions was that my plotting functions could be made more flexible to allow for easier customization without having to dive into the plotting function itself. I agree with this suggestion. In my original code, I had static plotting functions that were designed to create specific figures, but they didn't allow for easy modifications like changing the axis labels or the variables being plotted.
+
+Perhaps it would be more beneficial to design the function in a way that accepts dynamic arguments, allowing users to customise the plot directly from the analysis script without needing to modify the plotting function. 
+
+This could look like:
+# Function to create an exploratory figure with customizable parameters
+# plot_exploratory_figure <- function(data, x_col, y_col, x_label = "", y_label = "") {
+#   ggplot(data, aes_string(x = x_col, y = y_col, color = color_map)) + 
+#     geom_point() + 
+#     labs(title = "Exploratory Figure", x = x_label, y = y_label)
+#   # ...
+# }
+
+The user would then be able to customise specific parts of the function in the analysis script, (data, x-axis variable, y-axis variable, x-axis labels, and y- axis labels) and any other features added to this function defining section. While this change might make the code a bit longer, it does streamline the process of altering the figures, when having to make basic adjustments to the plots.
+
+*What did you learn about writing code for other people?*
+
+Working with other people and specifically having other people run my code, has been a valuable learning experience, particularly in understanding the importance of writing clear, reproducible, and accessible code for others. I have learned that while keeping code streamlined is important, it's equally essential to ensure it is flexible and reproducible across different environments. One of the challenges I encountered was ensuring that the environment was reproducible not only in my computer but for other people and their working systems too. I now truly appreciate the value of using tools like `renv` to manage package versions and environments, and `here` for consistent file paths. These tools ensure that the code runs smoothly regardless of the working system, making it more reproducible. Additionally, structuring functions to accept more customisable arguments makes the code more user-friendly and easier to adapt if necessary. 

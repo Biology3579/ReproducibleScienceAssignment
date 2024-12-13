@@ -1,0 +1,794 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+    \setmainfont[]{Arial}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[left = 0.5cm, right = 1cm, top = 1cm, bottom =
+2cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={PenguinsAnalysis},
+  pdfauthor={Biology3579},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{PenguinsAnalysis}
+\author{Biology3579}
+\date{2024-12-06}
+
+\begin{document}
+\maketitle
+
+\subsection{Introduction}\label{introduction}
+
+The genus Pygoscelis, which includes Adélie (\emph{Pygoscelis adeliae}),
+Chinstrap (\emph{Pygoscelis antarcticus}), and Gentoo (\emph{Pygoscelis
+papua}) penguins, occupies overlapping ranges across the Western
+Antarctic Peninsula. Despite this sympatric distribution, these species
+exhibit distinct feeding ecologies, ranging from specialist to
+generalist strategies, allowing them to occupy different ecological
+niches and minimising competition{[}1{]}. Diet composition analysis of
+Chinstrap penguins shows a high degree of specialization, with their
+diet consisting almost exclusively of the krill species \emph{Euphausia
+superba}{[}2{]}. In contrast, while Adélie penguins also rely heavily on
+krill, their diet is more varied, consisting of both \emph{E. superba}
+and \emph{E. crystallorophias} krill species, along with notothenioid
+fish{[}3{]}. Dietary analyses of Gentoo penguins reveal that this
+species has the most varied feeding habits, with a generalist diet
+consisting of a broad range of crustaceans and fish{[}1{]}. Notably,
+krill constitutes a smaller portion of their diet compared to other
+\emph{Pygoscelis} species, highlighting a distinct difference in the
+feeding ecology of this species.
+
+The bill morphology of penguins is a critical aspect of their feeding
+ecology, as it directly influences their ability to capture and consume
+different prey types. A study by Chávez-Hoffmeister (2020) found that
+penguin species display distinct bill shapes that are closely tied to
+their specific feeding strategies{[}4{]}. For example, krill-eating
+penguins tend to have wider beaks and broader jaws, which help them
+efficiently filter and capture krill. In contrast, fish-eating species
+possess narrower, more robust beaks designed to exert greater bite
+force, allowing them to grasp and hold onto slippery fish more
+effectively{[}4{]}. These morphological adaptations are essential for
+the species' feeding behavior, enabling them to exploit their preferred
+prey types. As such, each penguin species requires bill morphology that
+is finely tuned to its ecological niche, ensuring efficient foraging and
+survival in their specific environments.
+
+\subsection{Hypotheses}\label{hypotheses}
+
+Based on the importance of bill morphology in feeding behaviors and the
+differences in feeding ecologies between the species, I hypothesize that
+the three penguin species will exhibit distinct bill morphologies that
+reflect their specific feeding strategies.
+
+\subsection{Methods}\label{methods}
+
+\subsubsection{Data}\label{data}
+
+To investigate the differences in bill morphology across penguin
+species, I will be utilizing the palmerpenguins dataset, which is
+derived from a study conducted by Gorman et al.~(2014) on Pygoscelis
+penguins in the Palmer Archipelago, located west of the Antarctic
+Peninsula, near Anvers Island{[}5{]}. The data were collected from 2007
+to 2009 across three islands: Biscoe (64° 48.9'S, 63° 46.9'W), Torgersen
+(64° 46.9'S, 64° 04.9'W), and Dream (64° 43.9'S, 64° 13.9'W). This
+dataset includes multiple measurements taken on three species of
+Pygoscelis penguins - Adélie, Chinstrap, and Gentoo - observed on these
+three islands, including body measurements (culmen length, culmen depth,
+flipper length, and body mass), sex information, nesting details
+(including clutch completion and egg laying dates), and stable isotope
+data (Δ15N and Δ13C) for 344 individual penguins across three species.
+
+\subsubsection{Statistical analyses}\label{statistical-analyses}
+
+To investigate differences in bill morphology across Adélie, Chinstrap,
+and Gentoo penguins, I analyzed two key measurements: bill length and
+bill depth (which I also refer to as width). These metrics were used to
+assess morphological adaptations related to feeding ecology.
+
+\emph{Ratio of Bill Length to Bill Depth} The ratio of bill length to
+bill depth was used as an indicator of overall bill shape, as the two
+morphometric parameters for the penguins' bills provided in the dataset.
+A one-way ANOVA was conducted to compare the mean ratio across the three
+species, testing for significant differences in bill morphology. If
+significant results were found, Tukey's Honest Significant Difference
+(HSD) test was used for pairwise comparisons to identify where the
+species differences were coming from.
+
+\emph{Individual Measurement Comparisons: Bill Length and Bill Depth} To
+further examine morphological differences, I compared bill length and
+bill depth between the species using pairwise t-tests between each pair
+of penguin species (Adélie vs.~Chinstrap, Adélie vs.~Gentoo, and
+Chinstrap vs.~Gentoo). Additionally, I calculated the 95\% confidence
+intervals for the differences in means between each pair of species,
+which provide a precise estimate of the potential range for the true
+differences in bill morphology. These intervals help interpret the
+significance of the observed differences and whether they are meaningful
+in the context of ecological adaptation.
+
+\subsection{Analysis}\label{analysis}
+
+\emph{Important note:} Comprehensive instructions, including all
+prerequisites and detailed guidelines for running this analysis and
+relevant code, are available in the README file of my
+\href{https://github.com/Biology3579/ReproducibleScienceAssignment.git}{GitHub
+repository} for this project. Please refer to the README to ensure
+proper setup and usage.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Restoring project\textquotesingle{}s environment }
+\NormalTok{renv}\SpecialCharTok{::}\FunctionTok{restore}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## - The library is already synchronized with the lockfile.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Source library loading fucntion}
+\FunctionTok{source}\NormalTok{(here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"libraries.R"}\NormalTok{))}
+\CommentTok{\# Load necessary libraries}
+\FunctionTok{load\_libraries}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Load the raw data and save it}
+\FunctionTok{write.csv}\NormalTok{(penguins\_raw, }\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"penguins\_raw.csv"}\NormalTok{)) }\CommentTok{\#To write data to csv}
+\NormalTok{penguins\_raw }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{,}\StringTok{"penguins\_raw.csv"}\NormalTok{)) }\CommentTok{\#Load data }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Clean the raw data and save it separately}
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"cleaning\_and\_curating.R"}\NormalTok{))}
+\NormalTok{penguins\_clean }\OtherTok{\textless{}{-}} \FunctionTok{cleaning\_penguins}\NormalTok{(penguins\_raw)}
+\FunctionTok{write\_csv}\NormalTok{(penguins\_clean, }\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"penguins\_clean.csv"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Curate the clean data and save it separately}
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"cleaning\_and\_curating.R"}\NormalTok{))}
+\CommentTok{\#The curating\_penguins\_clean () funciton ...}
+\NormalTok{analysis\_data }\OtherTok{\textless{}{-}} \FunctionTok{curating\_penguins\_clean}\NormalTok{(penguins\_clean)}
+\FunctionTok{write\_csv}\NormalTok{(analysis\_data, }\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"analysis\_data.csv"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Exploratory analysis}\label{exploratory-analysis}
+
+\textbf{QUESTION 1: Bad Figure}
+
+\begin{verbatim}
+## pdf 
+##   2
+\end{verbatim}
+
+\begin{center}\includegraphics{PenguinAnalysis_files/figure-latex/bad-figure-plot-and-save-1} \end{center}
+
+\emph{Figure 1: Bar chart of mean bill length vs.~mean bill depth for
+three species of \emph{Pygoscelis} penguins.}
+
+\textbf{Reflection about bad figure}
+
+The figure displaying mean bill length and depth for Adélie, Chinstrap,
+and Gentoo penguins suffers from several design flaws that mislead the
+reader about the underlying data. The use of a bar chart to represent
+relationships between two continuous variables is inappropriate, as bar
+charts are better suited for categorical data and oversimplify the
+relationship being analyzed. A scatter plot would more effectively
+illustrate variation and trends between continuous measurements.
+Furthermore, the figure presents only summary statistics (mean values)
+without raw data points or indications of data distribution, preventing
+readers from assessing variability, outliers, or patterns within each
+species, which are critical for understanding the true complexity of the
+data.
+
+Additionally, the figure lacks error bars or representations of
+variability, such as standard deviations or confidence intervals, which
+are essential for evaluating the precision of the means and the
+reliability of comparisons. Without them, the differences between
+species may appear more significant or consistent than they actually
+are.
+
+Furthermore, some of the stylistic choices made for the graph make it
+harder to interpret the data. Firstly, the choice of similar colors for
+the three species which makes it difficult to differentiate between
+species at a glance; more contrasting colors or distinct patterns would
+improve clarity. In addition, the axis labels are vague - not indicating
+what exactly is being measured for length and depth - and fail to convey
+the units of measurement, detracting from the figure's interpretability.
+
+Concerns about scientific reproducibility are increasingly
+prevalent{[}6{]}. Well-designed figures ensure that data is represented
+transparently, enabling others to interpret findings accurately and
+validate results. Poorly constructed visuals, on the other hand, can
+obscure key patterns or relationships, undermining the credibility of
+the research and impeding reproducibility.
+
+\textbf{QUESTION 2: Data Pipeline}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Specify location of functions }
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"plotting.R"}\NormalTok{))}
+\CommentTok{\# Apply plot function}
+\NormalTok{exploratory\_figure }\OtherTok{\textless{}{-}} \FunctionTok{plot\_exploratory\_figure}\NormalTok{(analysis\_data)}
+\CommentTok{\# Apply save function}
+\FunctionTok{save\_plot\_svg}\NormalTok{(analysis\_data, }
+                      \StringTok{"figures/exploratory\_figure.svg"}\NormalTok{, }
+                      \AttributeTok{size =} \DecValTok{15}\NormalTok{, }
+                      \AttributeTok{scaling =} \DecValTok{1}\NormalTok{, }
+                      \AttributeTok{plot\_function =}\NormalTok{ plot\_exploratory\_figure)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## pdf 
+##   2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{exploratory\_figure }\CommentTok{\# Show the plot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{PenguinAnalysis_files/figure-latex/exploratory-figure-plot-and-save-1} \end{center}
+
+\emph{Figure 2: Scatterplot showing the distribution of bill lengths and
+bill depths for three species of \emph{Pygoscelis} penguins, with
+variability shown in bill length and depth across Adélie, Chinstrap, and
+Gentoo penguins.}
+
+Figure 2 provides an exploratory visualisation of the distribution of
+bill length and bill depth among three species of \emph{Pygoscelis}
+penguins, revealing distinct patterns in their morphospace. Adélie
+penguins tend to have relatively shorter but wider bills (greater bill
+depth), while Gentoo penguins exhibit longer and narrower bills.
+Chinstrap penguins occupy an intermediate space, showing bill depths
+similar to Adélie penguins but lengths closer to those of Gentoo
+penguins. This clear separation suggests potential species-specific
+differences in bill morphology.
+
+However, it is important to note that this figure is purely exploratory.
+While it highlights potential patterns, no definitive conclusions about
+interspecies differences can be drawn without conducting appropriate
+statistical tests to assess the significance of these observations.
+
+\subsubsection{Statistical analysis}\label{statistical-analysis}
+
+I first carried out an ANOVA, followed by Tukey-Kramer tests, to
+determine the general differences in bill morphology, using the bill
+length-to-depth ratio as a proxy for this. I then further investigated
+specific differences by testing bill length and bill depth separately to
+understand the variation between species. To provide more precise
+estimates of the species' bill characteristics, I also calculated 95\%
+confidence intervals for both bill length and bill depth.
+
+\paragraph{Differences in bill
+morphology}\label{differences-in-bill-morphology}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ANOVA to test for differences in bill morphology between penguin species}
+\NormalTok{bill\_morphology\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(bill\_morphology }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species, }\AttributeTok{data =}\NormalTok{ analysis\_data)}
+\FunctionTok{anova}\NormalTok{(bill\_morphology\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: bill_morphology
+##            Df Sum Sq Mean Sq F value    Pr(>F)    
+## species     2 73.175  36.587  1451.7 < 2.2e-16 ***
+## Residuals 330  8.317   0.025                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Tukey{-}Kramer test for pairwise comparisons of bill morphology between penguin species}
+\FunctionTok{TukeyHSD}\NormalTok{(}\FunctionTok{aov}\NormalTok{(bill\_morphology\_model))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = bill_morphology_model)
+## 
+## $species
+##                       diff       lwr       upr p adj
+## Chinstrap-Adelie 0.5322773 0.4774023 0.5871523     0
+## Gentoo-Adelie    1.0551237 1.0089631 1.1012844     0
+## Gentoo-Chinstrap 0.5228464 0.4660277 0.5796651     0
+\end{verbatim}
+
+\paragraph{Differences in bill length}\label{differences-in-bill-length}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pairwise t{-}tests for bill length between species with confidence intervals}
+\NormalTok{bill\_length\_t\_tests }\OtherTok{\textless{}{-}}\NormalTok{ analysis\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pairwise\_t\_test}\NormalTok{(}
+\NormalTok{    bill\_length\_mm }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species,      }\CommentTok{\# Specify the variables}
+    \AttributeTok{paired =} \ConstantTok{FALSE}\NormalTok{,                }\CommentTok{\# Unpaired data}
+    \AttributeTok{p.adjust.method =} \StringTok{"bonferroni"} \CommentTok{\# Bonferroni correction for multiple tests}
+\NormalTok{  )}
+
+\CommentTok{\# Print the result}
+\FunctionTok{print}\NormalTok{(bill\_length\_t\_tests)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 9
+##   .y.          group1 group2    n1    n2        p p.signif    p.adj p.adj.signif
+## * <chr>        <chr>  <chr>  <int> <int>    <dbl> <chr>       <dbl> <chr>       
+## 1 bill_length~ Adelie Chins~   146    68 2.52e-70 ****     7.57e-70 ****        
+## 2 bill_length~ Adelie Gentoo   146   119 1.05e-73 ****     3.16e-73 ****        
+## 3 bill_length~ Chins~ Gentoo    68   119 5.37e- 3 **       1.61e- 2 *
+\end{verbatim}
+
+\paragraph{Differences in bill depth}\label{differences-in-bill-depth}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pairwise t{-}tests for bill depth between species }
+\NormalTok{bill\_depth\_t\_tests }\OtherTok{\textless{}{-}}\NormalTok{ analysis\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pairwise\_t\_test}\NormalTok{(}
+\NormalTok{    bill\_depth\_mm }\SpecialCharTok{\textasciitilde{}}\NormalTok{ species,       }\CommentTok{\# Specify the variable and group}
+    \AttributeTok{paired =} \ConstantTok{FALSE}\NormalTok{,                 }\CommentTok{\# Specify the data is unpaired}
+    \AttributeTok{p.adjust.method =} \StringTok{"bonferroni"}  \CommentTok{\# Adjust p{-}values for multiple comparisons}
+\NormalTok{  )}
+
+\CommentTok{\# Print the result}
+\NormalTok{bill\_depth\_t\_tests}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 9
+##   .y.          group1 group2    n1    n2        p p.signif    p.adj p.adj.signif
+## * <chr>        <chr>  <chr>  <int> <int>    <dbl> <chr>       <dbl> <chr>       
+## 1 bill_depth_~ Adelie Chins~   146    68 6.57e- 1 ns       1   e+ 0 ns          
+## 2 bill_depth_~ Adelie Gentoo   146   119 6.62e-75 ****     1.99e-74 ****        
+## 3 bill_depth_~ Chins~ Gentoo    68   119 5.05e-59 ****     1.52e-58 ****
+\end{verbatim}
+
+\subsection{Results}\label{results}
+
+\subsubsection{All three studied penguin species show significant
+differences in length/depth
+ratios}\label{all-three-studied-penguin-species-show-significant-differences-in-lengthdepth-ratios}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Specify location of functions }
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"plotting.R"}\NormalTok{))}
+\CommentTok{\# Apply plot function}
+\NormalTok{bill\_morphology\_boxplot }\OtherTok{\textless{}{-}} \FunctionTok{results\_plot\_1}\NormalTok{(analysis\_data)}
+\CommentTok{\# Apply save function}
+\FunctionTok{save\_plot\_svg}\NormalTok{(analysis\_data, }
+                      \StringTok{"figures/bill\_morphology\_boxplot.svg"}\NormalTok{, }
+                      \AttributeTok{size =} \DecValTok{15}\NormalTok{, }
+                      \AttributeTok{scaling =} \DecValTok{1}\NormalTok{, }
+                      \AttributeTok{plot\_function =}\NormalTok{ results\_plot\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## pdf 
+##   2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bill\_morphology\_boxplot }\CommentTok{\# Show the plot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{PenguinAnalysis_files/figure-latex/plot-and-save-figure-3-1} \end{center}
+
+\emph{Figure 3: Boxplot showing differences in bill morphology among
+Adélie, Chinstrap and Gentoo penguins. Statistical significance is
+indicated by asterisks (*** p \textless{} 0.001), showing highly
+significant differences between all species pairs.}
+
+To assess whether there are significant differences in bill morphology
+across the three penguin species (Adélie, Chinstrap, and Gentoo), a
+one-way ANOVA was performed on the combined bill length and depth
+measurements (bill morphology). The results from the ANOVA indicated
+that bill morphology significantly differed between the species (F(2,
+330) = 1451.7, p \textless{} 2.2e-16), confirming the presence of
+interspecies variation. Additional post-hoc pairwise comparisons were
+conducted using Tukey's Honest Significant Difference (HSD) test,
+identified highly significant differences between all species pairs.
+
+By analysis the specific bill length/depth ratios displayed in Figure 3,
+we can see that Gentoo penguins have the largest ratio, suggesting
+relatively longer and shallower bills, greatly contrasting to Adélie
+penguins have a smaller length/depth ratio, having shorter, deeper
+beaks. Instead, Chinstrap penguins seem to have an intermediate ratio,
+with their bill morphology falling between that of the Adélie and Gentoo
+penguins.
+
+\subsubsection{There is variability in bill length and depth across the
+three penguin species, with some overlap in their
+morphologies}\label{there-is-variability-in-bill-length-and-depth-across-the-three-penguin-species-with-some-overlap-in-their-morphologies}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Specify location of functions }
+\FunctionTok{source}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"functions"}\NormalTok{, }\StringTok{"plotting.R"}\NormalTok{))}
+
+\CommentTok{\# Apply plot functions}
+\NormalTok{bill\_length\_boxplot }\OtherTok{\textless{}{-}} \FunctionTok{results\_plot\_2}\NormalTok{(analysis\_data)}
+\NormalTok{bill\_depth\_boxplot }\OtherTok{\textless{}{-}} \FunctionTok{results\_plot\_3}\NormalTok{(analysis\_data)}
+
+\CommentTok{\# Create the multi{-}panel figure and display it}
+\FunctionTok{grid.arrange}\NormalTok{(bill\_length\_boxplot, bill\_depth\_boxplot, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Add labels to the panels}
+\FunctionTok{grid.text}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\AttributeTok{x =} \FloatTok{0.055}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.95}\NormalTok{, }\AttributeTok{gp =} \FunctionTok{gpar}\NormalTok{(}\AttributeTok{fontsize =} \DecValTok{12}\NormalTok{))  }\CommentTok{\# Adds label \textquotesingle{}A\textquotesingle{} to the first graph}
+\FunctionTok{grid.text}\NormalTok{(}\StringTok{"B"}\NormalTok{, }\AttributeTok{x =} \FloatTok{0.57}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.95}\NormalTok{, }\AttributeTok{gp =} \FunctionTok{gpar}\NormalTok{(}\AttributeTok{fontsize =} \DecValTok{12}\NormalTok{))  }\CommentTok{\# Adds label \textquotesingle{}B\textquotesingle{} to the second graph}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{PenguinAnalysis_files/figure-latex/plot-figure-4-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#This was saved separately to avoid unwanted outputs}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Figure 4: Boxplots showing differences in bill length (Figure 4a)
+and bill depth (Figure 4b) among Adélie, Chinstrap and Gentoo penguins.
+Statistical significance is indicated by asterisks (*** p \textless{}
+0.001, ** p \textless{} 0.01, * p \textless{} 0.05, ns p \textgreater{}
+0.05). Figure 4a shows differences in bill length across the three
+species. Figure 4b shows differences in bill depth across the three
+species.}
+
+To investigate further the differences in bill morphology, pairwise
+t-tests were conducted to assess whether there were significant
+differences in bill length and bill depth among the three species
+(Adélie, Chinstrap, and Gentoo). For bill length, the results showed
+significant differences between all species pairs. As shown in Figure
+4a, Adélie penguins had highly significantly shorter bills compared to
+both Chinstrap (p \textless{} 2.52e-70) and Gentoo (p \textless{}
+1.05e-73) penguins. The differences in bill length between Chinstrap and
+Gentoo penguins were less disparate but still significant. These
+findings indicate that bill length varies considerably between species.
+
+Comparisons for bill depth across the species revealed that both Adélie
+and Chinstrap penguins exhibited significant differences in bill depth
+when compared to Gentoo penguins (Adélie vs.~Gentoo: p \textless{}
+6.62e-75, Chinstrap vs.~Gentoo: p \textless{} 5.05e-59), but there were
+no significant differences between Adélie and Chinstrap penguins (p =
+6.57e-01). From Figure 4b we can indeed see that Adélie and Chinstrap
+penguins have similarly wide bills, whereas Gentoo penguins have
+significantly narrower bills.
+
+\subsection{Conclusions}\label{conclusions}
+
+The results of this study reveal notable differences in bill morphology
+across the three Pygoscelis penguin species, highlighting potential
+relationships between bill structure and feeding strategies. All
+penguins show significant differences in bill length, which could indeed
+be reflective of different feeding habits. Additionally Gentoo penguins,
+in particular, exhibit distinctly narrower bills compared to the other
+two species, which may reflect their more diverse and generalized diet,
+consisting mainly of fish. The narrower bill may be better suited for
+capturing fish, which require more precise handling. On the other hand,
+Adélie and Chinstrap penguins show more similar bill depths that may be
+better adapted to capture krill, as the primary component of their diet.
+The similarity in bill depth between the two species might reflect a
+shared ecological niche, with both relying heavily on krill, a prey
+species that is heavily affected by climate change, particularly as
+warming oceans and retreating sea ice threaten the availability of krill
+in their habitats.
+
+However, while the differences in bill morphology across the species are
+significant, the study does not provide direct evidence linking these
+morphological traits to dietary preferences. There may be other
+ecological factors at play, such as environmental influences and
+behavioural differences not associated to feeding (e.g social
+behaviours) which could also shape bill morphology. Moreover, it is
+important to note that while the bill length-to-depth ratio has provided
+useful insights into bill morphology, it has limitations as a sole
+measure of feeding strategy. The relationship between bill morphology
+and feeding behavior is complex, and factors such as bill shape, size,
+and curvature could all play a role in how penguins capture and consume
+different prey types. Therefore, further research is needed to explore
+how these morphological traits interact with ecological factors and how
+penguin species might adapt to changing environmental conditions.
+
+In conclusion, this study provides valuable insights into how bill
+morphology varies between three species of \emph{Pygoscelis} penguins
+and provides promising insights into how these morphologies might
+reflect the different feeding strategies between these, but it also
+highlights the need for more comprehensive studies that take into
+account other ecological variables and the broader environmental
+context. Understanding these relationships is especially critical in the
+face of climate change, which is likely to affect the availability of
+prey species such as krill{[}7{]}, and could enforce strong selection
+for shifting the dynamics between specialized and generalist feeders in
+penguin populations .
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\item
+  {[}1{]} Polito, M., Trivelpiece, W., Patterson, W., Karnovsky, N.,
+  Reiss, C. and Emslie, S. (2015). Contrasting specialist and generalist
+  patterns facilitate foraging niche partitioning in sympatric
+  populations of Pygoscelis penguins. Marine Ecology Progress Series,
+  519, pp.221--237. \url{doi:https://doi.org/10.3354/meps11095}.
+\item
+  {[}2{]} RatcliffeN. and Trathan, P. (2011). Introduction A REVIEW OF
+  THE DIET AND AT-SEA DISTRIBUTION OF PENGUINS BREEDING WITHIN THE CAMLR
+  CONVENTION AREA. CCAMLR Science, {[}online{]} 18, pp.75--114.
+  Available at:
+  \url{https://www.ccamlr.org/en/system/files/science_journal_papers/Ratcliffe-Trathan_0.pdf}
+  {[}Accessed 11 Dec.~2024{]}.
+\item
+  {[}3{]} Tabassum, N., Lee, J.-H., Lee, S.-R., Kim, J.-U., Park, H.,
+  Kim, H.-W. and Kim, J.-H. (2022). Molecular Diet Analysis of Adélie
+  Penguins (Pygoscelis adeliae) in the Ross Sea Using Fecal DNA.
+  Biology, 11(2), p.182.
+  \url{doi:https://doi.org/10.3390/biology11020182}.
+\item
+  {[}4{]} Chávez-Hoffmeister, M. (2020). Bill disparity and feeding
+  strategies among fossil and modern penguins. Paleobiology,
+  {[}online{]} 46(2), pp.176--192.
+  \url{doi:https://doi.org/10.1017/pab.2020.10}.
+\item
+  {[}5{]} Gorman, K.B., Williams, T.D. and Fraser, W.R. (2014).
+  Ecological Sexual Dimorphism and Environmental Variability within a
+  Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE, 9(3),
+  p.e90081. \url{doi:https://doi.org/10.1371/journal.pone.0090081}.
+\item
+  {[}6{]} Open Science Collaboration (2015). Estimating the
+  reproducibility of psychological science. Science, {[}online{]}
+  349(6251). \url{doi:https://doi.org/10.1126/science.aac4716}.
+\item
+  {[}7{]} Clucas, G.V., Dunn, M.J., Dyke, G., Emslie, S.D., Levy, H.,
+  Naveen, R., Polito, M.J., Pybus, O.G., Rogers, A.D. and Hart, T.
+  (2014). A reversal of fortunes: climate change `winners' and `losers'
+  in Antarctic Peninsula penguins. Scientific Reports, 4(1).
+  \url{doi:https://doi.org/10.1038/srep05024}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{** QUESTION 3: Open
+Science**}\label{question-3-open-science}
+
+\textbf{My GitHub link:}
+\url{https://github.com/Biology3579/ReproducibleScienceAssignment.git}
+
+\emph{Note: for this section we worked in a three way system. I analysed
+Anonymous94394's code, whilst bleeddmagic's analysed my code.}
+
+Here are their respective repositories:
+
+** Anonymous94394's GitHub link:**
+\url{https://github.com/Anonymous94394/PalmerPenguins.git}
+
+** bleeddmagic's GitHub link:**
+\url{https://github.com/bleeddmagic/PenguinsProject}
+
+\subsubsection{Reflection after running
+Anonymous94394's}\label{reflection-after-running-anonymous94394s}
+
+When I ran my partner's code, I found it to be well-organized and
+accessible, which greatly enhanced my understanding of the data
+pipeline. The code was structured into clearly defined sections with
+informative headings, making navigation intuitive. Each section was
+accompanied by comments explaining its purpose, which helped me follow
+the workflow and understand how the parts fit together. This thoughtful
+structure and clarity made the code easy to follow, even for someone
+unfamiliar with the dataset. A standout feature was the use of functions
+to break down complex tasks, which decluttered the main script and
+improved readability. This modular approach streamlined the process and
+allowed for easy reuse of code. I appreciated that the functions were
+called at the start, making their role within the script immediately
+clear. This separation of concerns not only enhanced organization but
+also made debugging and testing individual components straightforward.
+The use of the renv package to manage dependencies was another strong
+point. By ensuring access to the correct versions of required packages,
+the code was highly reproducible and avoided version-related errors.
+Additionally, listing all required libraries at the beginning of the
+script helped streamline the setup process and ensured that no
+dependencies were overlooked. These thoughtful design choices made
+setting up the environment much easier and faster. However, the code
+relies heavily on access to specific files in the repository, which is
+not clearly communicated. Without these files, the code cannot run
+properly. While this approach keeps the code itself uncluttered, the
+lack of a README.md file explaining these dependencies is a drawback.
+Adding a README file with setup instructions and a list of required
+files would improve accessibility and reproducibility, ensuring others
+can use the code without confusion.
+
+The code executed without major issues, and I did not need to fix
+anything, though I had to ensure all necessary files and dependencies
+were in place. The use of renv simplified this process significantly,
+allowing the project to run seamlessly in its intended environment.
+
+Overall, the code was well-prepared and reproducible, with only minor
+improvements needed to make it even more user-friendly and accessible to
+a broader audience.
+
+\subsubsection{Reflecting on my own
+code}\label{reflecting-on-my-own-code}
+
+\emph{What improvements did they suggest, and do you agree?}
+
+Based on my partner's feedback, one key suggestion was to place the
+methods and conclusions closer to the relevant code. I agree with this,
+as restructuring the code to include explanations directly beneath the
+relevant sections would improve readability. This would reduce the need
+to refer back to separate sections, making it easier for others to
+follow the analysis without constantly jumping between different parts
+of the code. Regarding the use of renv::init(), I made sure that I
+uploaded the updated renv.lock and properly specified its usage in the
+script, ensuring that the environment would be correctly initialized
+when other users run the code. This way, the necessary package versions
+and dependencies are accurately installed, and the environment remains
+consistent.
+
+Another key suggestions was that my plotting functions could be made
+more flexible to allow for easier customization without having to dive
+into the plotting function itself. I agree with this suggestion. In my
+original code, I had static plotting functions that were designed to
+create specific figures, but they didn't allow for easy modifications
+like changing the axis labels or the variables being plotted.
+
+Perhaps it would be more beneficial to design the function in a way that
+accepts dynamic arguments, allowing users to customise the plot directly
+from the analysis script without needing to modify the plotting
+function.
+
+This could look like: \# Function to create an exploratory figure with
+customizable parameters \# plot\_exploratory\_figure \textless-
+function(data, x\_col, y\_col, x\_label = ``\,``, y\_label =''``) \{ \#
+ggplot(data, aes\_string(x = x\_col, y = y\_col, color = color\_map)) +
+\# geom\_point() + \# labs(title =''Exploratory Figure'', x = x\_label,
+y = y\_label) \# \# \ldots{} \# \}
+
+The user would then be able to customise specific parts of the function
+in the analysis script, (data, x-axis variable, y-axis variable, x-axis
+labels, and y- axis labels) and any other features added to this
+function defining section. While this change might make the code a bit
+longer, it does streamline the process of altering the figures, when
+having to make basic adjustments to the plots.
+
+\emph{What did you learn about writing code for other people?}
+
+Working with other people and specifically having other people run my
+code, has been a valuable learning experience, particularly in
+understanding the importance of writing clear, reproducible, and
+accessible code for others. I have learned that while keeping code
+streamlined is important, it's equally essential to ensure it is
+flexible and reproducible across different environments. One of the
+challenges I encountered was ensuring that the environment was
+reproducible not only in my computer but for other people and their
+working systems too. I now truly appreciate the value of using tools
+like \texttt{renv} to manage package versions and environments, and
+\texttt{here} for consistent file paths. These tools ensure that the
+code runs smoothly regardless of the working system, making it more
+reproducible. Additionally, structuring functions to accept more
+customisable arguments makes the code more user-friendly and easier to
+adapt if necessary.
+
+\end{document}
