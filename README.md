@@ -3,19 +3,9 @@ This repository contains the files and scripts for the Penguins Analysis project
 
 All the necessary code for the analysis can be found in the [PenguinAnalysis.Rmd](https://github.com/Biology3579/ReproducibleScienceAssignment/blob/main/PenguinAnalysis.Rmd) file. The R Markdown document contains the data preprocessing, statistical analysis, and visualizations performed during the project.
 
-## Repository Structure
-
-/project_root 
-|----  /README.md # ...
-|----  /ReproducibleScienceAssignment.Rproj # RStudio project file
-|----  /PenguinAnalysis.Rmd # Main ... 
-|----  /data # Contains raw and processed data files
-|----  /functions # R scripts for ...
-|----  /figures # Generated figures
-
 ## Finished Reports
 
-In the /finished_files folder, you will find the completed reports summarizing the analysis, results, and conclusions:
+In my repo you will find two completed reports summarizing the analysis, results, and conclusions:
 
 - PDF Report: A full PDF report containing the analysis, results, and interpretations.
 - HTML Report: An interactive HTML version of the report for a more dynamic viewing experience.
@@ -49,7 +39,7 @@ cd ReproducibleScienceAssignment
 
 **2. Open PenguinAnalysis.Rmd**
 
-Find the `PenguinAnaysis.Rmd` file in the ...
+Find the `PenguinAnaysis.Rmd` file in the main repo.
 This is the main file for the analysis.
 
 **3. Restore the R environment**
