@@ -141,24 +141,22 @@ results_plot_1 <- function(data) {
                                    c("Chinstrap", "Gentoo"), 
                                    c("Adelie", "Gentoo")),
                 annotations = c("***", "***", "***"),  # Adding the significance stars
-                test = "aov",  # Test used
+                test = "aov",                   # Test used
                 y_position = c(3.5,3.6,3.8),    # Position of significance stars
-                tip_length = 0.01) +            # Short tip lines for neatness
+                tip_length = 0.01) +            # Short tip lines
     
     # Apply custom colours
     scale_color_manual(values = custom_colours) +
     
     # Labels and title
     labs(x = "Species",
-         y = "Bill Length-to-Depth Ratio",
-         title = "Comparison of Bill Morphology Across Penguin Species") +
+         y = "Bill Length-to-Depth Ratio") +
     
     # Themes, sizes and positioning
     theme_minimal() + 
     theme(
       axis.title.x = element_text(size = 10),
       axis.title.y = element_text(size = 10),
-      plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
       legend.position = "none")
 }
 
@@ -169,17 +167,17 @@ results_plot_2 <- function(data) {
   # Define data and axes
   ggplot(data = analysis_data, 
          aes(x = species, 
-             y = bill_length_mm)) +  # Change to bill_length_mm for the y-axis
+             y = bill_length_mm)) + 
     
     # Boxplot for bill length
     geom_boxplot(aes(
-      color = species),      # Species-specific colour
+      color = species),       # Species-specific colour
       width = 0.5,            # Width of the boxplot
       show.legend = FALSE) +  # Remove legend for color
     
     # Plot all individual data points
     geom_jitter(aes(
-      color = species),    # Species-specific colour
+      color = species),     # Species-specific colour
       alpha = 0.3,          # Transparency of the points
       show.legend = FALSE,  # No legend for the points
       position = position_jitter(width = 0.2, # Specify jitter width
@@ -190,23 +188,22 @@ results_plot_2 <- function(data) {
                                    c("Chinstrap", "Gentoo"), 
                                    c("Adelie", "Gentoo")),
                 annotations = c("***", "*", "***"),  # Adding the significance stars
-                test = "t.test",  # Change to t-test for pairwise comparisons
-                y_position = c(59, 61, 64),    # Position of significance stars
-                tip_length = 0.01) +            # Short tip lines for neatness
+                test = "t.test",                     # Test used
+                y_position = c(59, 61, 64),          # Position of significance stars
+                tip_length = 0.01) +                 # Short tip lines 
     
     # Apply custom colours
     scale_color_manual(values = custom_colours) +
     
     # Axes labels 
     labs(x = "Species",
-         y = "Bill Length (mm)") +  # Update y-axis label to reflect bill length
+         y = "Bill Length (mm)") +  
     
     # Themes, sizes, and positioning
     theme_minimal() + 
     theme(
       axis.title.x = element_text(size = 10),
       axis.title.y = element_text(size = 10),
-      plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
       legend.position = "none")
 }
 
@@ -216,13 +213,13 @@ results_plot_3 <- function(data) {
   # Define data and axes
   ggplot(data = analysis_data, 
          aes(x = species, 
-             y = bill_depth_mm)) +  # Change to bill_length_mm for the y-axis
+             y = bill_depth_mm)) +
     
     # Boxplot for bill depth
     geom_boxplot(aes(
-      color = species),      # Species-specific colour
+      color = species),       # Species-specific colour
       width = 0.5,            # Width of the boxplot
-      show.legend = FALSE) +  # Remove legend for color
+      show.legend = FALSE) +  # Remove legend
     
     # Plot all individual data points
     geom_jitter(aes(
@@ -237,34 +234,33 @@ results_plot_3 <- function(data) {
                                    c("Chinstrap", "Gentoo"), 
                                    c("Adelie", "Gentoo")),
                 annotations = c("ns", "***", "***"),  # Adding the significance stars
-                test = "t.test",  # Change to t-test for pairwise comparisons
-                y_position = c(22, 21, 24),    # Position of significance stars
-                tip_length = 0.01) +          # Short tip lines for neatness
+                test = "t.test",                      # Test used
+                y_position = c(22, 21, 24),           # Position of significance stars
+                tip_length = 0.01) +                  # Short tip lines
     
     # Apply custom colours
     scale_color_manual(values = custom_colours) +
     
     # Axes labels 
     labs(x = "Species",
-         y = "Bill Depth (mm)") +  # Update y-axis label to reflect bill length
+         y = "Bill Depth (mm)") + 
     
     # Themes, sizes, and positioning
     theme_minimal() + 
     theme(
       axis.title.x = element_text(size = 10),
       axis.title.y = element_text(size = 10),
-      plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
       legend.position = "none")
 }
 
 # Saving Figures Function ----
 
-# Fucntion to save figures as svg (vector) files
+# Function to save figures as svg (vector) files
 save_plot_svg <- function(data, 
-                                  filename, # Filename (and path: folder/name)
-                                  size, 
-                                  scaling, 
-                                  plot_function){
+                                  filename, # Specify filename (and path: folder/name)
+                                  size,     # Specify size
+                                  scaling,  # Specify scaling
+                                  plot_function){ # Specify plot function
   
   size_inches = size / 2.54  # Convert size from cm to inches
   svglite(filename, width = size_inches, height = size_inches, scaling = scaling)

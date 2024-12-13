@@ -36,7 +36,9 @@ To investigate the differences in bill morphology across penguin species, I will
 
 ### Statistical analyses
 
-To investigate differences in bill morphology across Adélie, Chinstrap, and Gentoo penguins, I analyzed two key measurements: bill length and bill depth (which I also refer to as width). These metrics were used to assess morphological adaptations related to feeding ecology.
+To investigate differences in beak morphology across G. fortis finches before and after the 1977 drought, I will analyze the beak depth measurements from two independent groups: finches captured in 1976 (before the drought) and those captured in 1978 (after the drought). 
+
+The following statistical methods will be employed:
 
 _Ratio of Bill Length to Bill Depth_
 The ratio of bill length to bill depth was used as an indicator of overall bill shape, as the two morphometric parameters for the penguins' bills provided in the dataset. 
@@ -45,8 +47,6 @@ If significant results were found, Tukey's Honest Significant Difference (HSD) t
 
 _Individual Measurement Comparisons: Bill Length and Bill Depth_
 To further examine morphological differences, I compared bill length and bill depth between the species using pairwise t-tests between each pair of penguin species (Adélie vs. Chinstrap, Adélie vs. Gentoo, and Chinstrap vs. Gentoo).
-Additionally, I calculated the 95% confidence intervals for the differences in means between each pair of species, which provide a precise estimate of the potential range for the true differences in bill morphology. These intervals help interpret the significance of the observed differences and whether they are meaningful in the context of ecological adaptation.
-
 
 ## Analysis
 
